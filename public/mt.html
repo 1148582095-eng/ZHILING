@@ -1414,6 +1414,797 @@
       color: #cbd5e1;
       margin: 0 2px;
     }
+
+    /* ---- Two-step designer breadcrumb / stepper (new) ---- */
+    .pd-doc-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #e6f4ff;
+      color: #1677ff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pd-code-badge {
+      font-size: 12px;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: ui-monospace, Menlo, monospace;
+    }
+    .pd-tag-badge {
+      font-size: 12px;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+      padding: 1px 9px;
+      border-radius: 999px;
+    }
+    .pd-saved-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: #52c41a;
+    }
+    .pd-steps {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pd-step-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pd-step-item.active {
+      background: #e6f4ff;
+      color: #1677ff;
+    }
+    .pd-step-item.done {
+      color: #52c41a;
+    }
+    .pd-step-num {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      color: #fff;
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pd-step-item.active .pd-step-num {
+      background: #1677ff;
+    }
+    .pd-step-item.done .pd-step-num {
+      background: #52c41a;
+    }
+    .pd-step-count {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+    .pd-step-arrow {
+      color: #cbd5e1;
+    }
+
+    /* ---- Shared two-column body (palette | canvas | property panel) ---- */
+    .pd-body3 {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .pd-palette {
+      width: 260px;
+      min-width: 260px;
+      background: #fff;
+      border-right: 1px solid #e8e8e8;
+      overflow-y: auto;
+      padding: 18px 16px;
+    }
+    .pd-palette-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 14px;
+    }
+    .pd-palette-header i {
+      color: #1677ff;
+    }
+    .pd-palette-count {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+    .pd-palette-hint {
+      display: flex;
+      gap: 8px;
+      background: #f0f7ff;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .pd-palette-hint i {
+      color: #1677ff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .pd-palette-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .pd-palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 6px;
+      background: #fff;
+      border: 1px solid #eef2f7;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pd-palette-item:hover {
+      border-color: #91caff;
+      background: #f0f7ff;
+    }
+    .pd-palette-item-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pd-palette-item-label {
+      font-size: 12px;
+      color: #334155;
+      font-weight: 500;
+    }
+    .pd-palette-sub {
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      margin: 18px 0 10px;
+    }
+    .pd-palette-help-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pd-palette-help-item {
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .pd-palette-help-item b {
+      color: #334155;
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+    .pd-palette-footnote {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed #eef2f7;
+    }
+    .pd-lib-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 10px;
+      background: #fff;
+      border: 1px solid #eef2f7;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: all 0.15s;
+    }
+    .pd-lib-item:hover {
+      border-color: #91caff;
+      background: #f0f7ff;
+    }
+    .pd-lib-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pd-lib-item-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .pd-lib-item-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 1px;
+    }
+    .pd-lib-rule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pd-lib-rule-item {
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    .pd-lib-rule-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .pd-lib-rule-item b {
+      color: #334155;
+      font-weight: 600;
+    }
+
+    /* ---- Step 1: form config canvas ---- */
+    .pd-form-canvas-wrap {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      padding: 32px 24px;
+      background: #f0f2f5;
+    }
+    .pd-form-card {
+      width: 100%;
+      max-width: 860px;
+      height: fit-content;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      padding: 28px 36px 40px;
+    }
+    .pd-form-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .pd-form-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #1677ff;
+      background: #e6f4ff;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .pd-form-code {
+      font-size: 12px;
+      color: #94a3b8;
+      font-family: ui-monospace, Menlo, monospace;
+      margin-top: 4px;
+    }
+    .pd-form-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 6px;
+    }
+    .pd-form-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 26px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .pd-form-field {
+      position: relative;
+      padding: 14px 16px 16px;
+      border-radius: 8px;
+      border: 1.5px solid transparent;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pd-form-field:hover {
+      background: #fafbfc;
+    }
+    .pd-form-field.selected {
+      border-color: #1677ff;
+      background: #f5faff;
+      box-shadow: 0 0 0 3px rgba(22,119,255,0.08);
+    }
+    .pd-form-field-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pd-form-field-label .req {
+      color: #ff4d4f;
+    }
+    .pd-form-field-fake-input {
+      height: 38px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 13px;
+      color: #bfbfbf;
+      background: #fff;
+    }
+    .pd-form-field-fake-input.textarea {
+      height: 68px;
+      align-items: flex-start;
+      padding-top: 10px;
+    }
+    .pd-form-field-help {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+    .pd-form-field-drag {
+      position: absolute;
+      left: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #cbd5e1;
+      cursor: grab;
+    }
+    .pd-form-field-toolbar {
+      position: absolute;
+      top: -12px;
+      right: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: #1e293b;
+      color: #fff;
+      border-radius: 6px;
+      padding: 3px 4px;
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .pd-form-field.selected .pd-form-field-toolbar,
+    .pd-form-field:hover .pd-form-field-toolbar {
+      opacity: 1;
+    }
+    .pd-form-field-toolbar-label {
+      padding: 0 6px;
+      font-weight: 600;
+    }
+    .pd-form-field-toolbar button {
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: transparent;
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .pd-form-field-toolbar button:hover {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .pd-form-field-toolbar button.danger:hover {
+      color: #ff7875;
+    }
+
+    /* ---- Step 1/2 shared right property panel ---- */
+    .pd-panel {
+      width: 320px;
+      min-width: 320px;
+      background: #fff;
+      border-left: 1px solid #e8e8e8;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .pd-panel-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+    .pd-panel-id {
+      font-size: 11px;
+      color: #cbd5e1;
+      margin-left: auto;
+      font-family: ui-monospace, Menlo, monospace;
+    }
+    .pd-panel-divider {
+      height: 1px;
+      background: #f0f0f0;
+      margin: 14px 0 18px;
+    }
+    .pd-panel-row {
+      margin-bottom: 18px;
+    }
+    .pd-panel-label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .pd-panel-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .pd-panel-label-hint {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .pd-panel-input {
+      width: 100%;
+      box-sizing: border-box;
+      height: 34px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      padding: 0 10px;
+      font-size: 13px;
+      color: #1e293b;
+      background: #fff;
+      outline: none;
+      font-family: inherit;
+    }
+    .pd-panel-input:focus {
+      border-color: #1677ff;
+    }
+    textarea.pd-panel-input {
+      height: auto;
+      padding: 8px 10px;
+      resize: none;
+      line-height: 1.6;
+    }
+    .pd-toggle {
+      position: relative;
+      width: 38px;
+      height: 20px;
+      border-radius: 999px;
+      background: #d9d9d9;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .pd-toggle.on {
+      background: #1677ff;
+    }
+    .pd-toggle-dot {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      transition: left 0.15s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .pd-toggle.on .pd-toggle-dot {
+      left: 20px;
+    }
+    .pd-panel-note {
+      display: flex;
+      gap: 8px;
+      background: #f0f7ff;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.6;
+    }
+    .pd-panel-note i {
+      color: #1677ff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .pd-subject-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .pd-subject-tab {
+      flex: 1;
+      text-align: center;
+      padding: 6px 4px;
+      font-size: 12px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      color: #475569;
+      cursor: pointer;
+      background: #fff;
+      transition: all 0.15s;
+    }
+    .pd-subject-tab.active {
+      border-color: #1677ff;
+      color: #1677ff;
+      background: #e6f4ff;
+      font-weight: 600;
+    }
+    .pd-subject-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+      min-height: 30px;
+    }
+    .pd-subject-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px;
+      background: #f0f7ff;
+      color: #1677ff;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+    .pd-subject-tag i {
+      cursor: pointer;
+      color: #91caff;
+    }
+    .pd-subject-tag i:hover {
+      color: #ff4d4f;
+    }
+    .pd-quick-add-label {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+    .pd-quick-add-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pd-quick-add-btn {
+      font-size: 12px;
+      color: #475569;
+      border: 1px dashed #d9d9d9;
+      background: #fafafa;
+      padding: 4px 9px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pd-quick-add-btn:hover {
+      border-color: #1677ff;
+      color: #1677ff;
+      background: #f0f7ff;
+    }
+    .pd-toggle-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .pd-toggle-row-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .pd-toggle-row-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+    .pd-toggle-row-sub {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .pd-input-suffix-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pd-input-suffix-row .pd-panel-input {
+      flex: 1;
+    }
+    .pd-input-suffix-text {
+      font-size: 12px;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+    .pd-panel-delete-btn {
+      width: 100%;
+      margin-top: 24px;
+      height: 36px;
+      border: 1px solid #ffccc7;
+      background: #fff2f0;
+      color: #ff4d4f;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .pd-panel-delete-btn:hover {
+      background: #ffece8;
+    }
+
+    /* ---- Step 2: flow node cards ---- */
+    .pd-flow-canvas-wrap {
+      flex: 1;
+      overflow: auto;
+      padding: 28px 32px;
+      background: #f0f2f5;
+    }
+    .pd-flow-canvas-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+    .pd-flow-canvas-header .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1677ff;
+      flex-shrink: 0;
+    }
+    .pd-flow-canvas-header .count {
+      margin-left: auto;
+      font-weight: 600;
+      color: #334155;
+    }
+    .pd-flow-node {
+      width: 100%;
+      max-width: 660px;
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+      margin-bottom: 0;
+    }
+    .pd-flow-node:hover {
+      border-color: #91caff;
+    }
+    .pd-flow-node.selected {
+      border-color: #1677ff;
+      box-shadow: 0 0 0 3px rgba(22,119,255,0.12);
+    }
+    .pd-flow-node-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .pd-flow-node-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pd-flow-node-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .pd-flow-node-tag {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 999px;
+    }
+    .pd-flow-node-drag {
+      color: #cbd5e1;
+      cursor: grab;
+      margin-left: 4px;
+    }
+    .pd-flow-node-desc {
+      font-size: 12.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      margin-left: 34px;
+    }
+    .pd-flow-node-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-left: 34px;
+    }
+    .pd-flow-node-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #475569;
+    }
+    .pd-flow-node-chip.blue { background: #e6f4ff; color: #1677ff; }
+    .pd-flow-node-chip.orange { background: #fff3e0; color: #d46b08; }
+    .pd-flow-node-chip.red { background: #fff1f0; color: #ff4d4f; }
+    .pd-flow-node-chip.green { background: #f0f9eb; color: #389e0d; }
+    .pd-flow-node-del {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      color: #94a3b8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .pd-flow-node:hover .pd-flow-node-del {
+      opacity: 1;
+    }
+    .pd-flow-node-del:hover {
+      color: #ff4d4f;
+      border-color: #ffccc7;
+    }
+    .pd-flow-connector {
+      position: relative;
+      width: 100%;
+      max-width: 660px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .mt-modal-control {
       flex: 1;
       display: flex;
@@ -2695,7 +3486,7 @@
         </button>
         <button class="nav-item" data-tab="stats" onclick="switchTab('stats')">
           <i data-lucide="pie-chart"></i>
-          <span>机构使用统计</span>
+          <span>机��使用统计</span>
         </button>
         <button class="nav-item" data-tab="templates" onclick="switchTab('templates')">
           <i data-lucide="file-text"></i>
@@ -2758,7 +3549,7 @@
           { date: '2026-06-03', time: '14:44:28', title: '续期开通', desc: '续期开通正式版。应用到期时间为 2026-06-30 00:00:00。' },
           { date: '2026-06-03', time: '14:42:13', title: '应用停用', desc: '应用停用。应用到期时间为 2026-06-03 14:42:13。' },
           { date: '2026-06-03', time: '11:34:45', title: '续期开通', desc: '续期开通正式版。应用到期时间为 2026-06-30 00:00:00。' },
-          { date: '2026-06-03', time: '11:34:22', title: '应用停用', desc: '应用停用。应用到期时间为 2026-06-03 11:34:22。' },
+          { date: '2026-06-03', time: '11:34:22', title: '应用停用', desc: '应用停用。应用到期时���为 2026-06-03 11:34:22。' },
           { date: '2026-06-03', time: '11:10:22', title: '续期开通', desc: '续期开通正式版。应用到期时间为 2026-06-30 00:00:00。' },
           { date: '2026-06-03', time: '10:51:23', title: '应用停用', desc: '应用停用。应用到期时间为 2026-06-03 10:51:23。' },
           { date: '2026-06-03', time: '10:43:39', title: '续期开通', desc: '续期开通正式版。应用到期时间为 2026-06-30 00:00:00。' },
@@ -2945,7 +3736,7 @@
       orgs: [
         { id: 101, name: '台湾省网信办', status: '已启用', version: '正式', expireDate: '2027-06-16', expireTag: '', remainDays: '293天', openCount: 8, lastOpenTime: '2026-06-03', opener: '汪艳琼' },
         { id: 1, name: '中共浙江省委网络安全和信息化委员会办公室（浙江省互联网信息办公室）', status: '已启用', version: '试用', expireDate: '2026-09-04', expireTag: '即将到期', remainDays: '8天', openCount: 1, lastOpenTime: '2026-08-27', opener: '王骁' },
-        { id: 2, name: '中共碌曲县委宣传部', status: '已启用', version: '试用', expireDate: '2026-09-20', expireTag: '即将到期', remainDays: '24天', openCount: 1, lastOpenTime: '2026-08-20', opener: '王骁' },
+        { id: 2, name: '中共碌曲县委宣传���', status: '已启用', version: '试用', expireDate: '2026-09-20', expireTag: '即将到期', remainDays: '24天', openCount: 1, lastOpenTime: '2026-08-20', opener: '王骁' },
         { id: 3, name: '台中市教育局', status: '已启用', version: '正式', expireDate: '2026-09-30', expireTag: '', remainDays: '34天', openCount: 3, lastOpenTime: '2026-08-19', opener: '试用中心...' },
         { id: 4, name: '中共博尔塔拉蒙古自治州委员会网络安全和信息化委员会办公室', status: '已启用', version: '试用', expireDate: '2026-11-13', expireTag: '', remainDays: '78天', openCount: 1, lastOpenTime: '2026-08-13', opener: '穆猛强' },
         { id: 5, name: '中共包头市委员会网络安全和信息化委员会办公室（包头市互联网信息办公室）', status: '已启用', version: '试用', expireDate: '2026-10-13', expireTag: '', remainDays: '47天', openCount: 1, lastOpenTime: '2026-08-13', opener: '王骁' },
@@ -3790,7 +4581,7 @@
             ` : `
               <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 360px; color: #8c8c8c;">
                 <i data-lucide="inbox" width="48" height="48" style="color: #cbd5e1; margin-bottom: 12px;"></i>
-                <div style="font-size: 14px;">暂无选中的业务应用</div>
+                <div style="font-size: 14px;">暂无��中的业务应用</div>
                 <button class="btn btn-primary" style="margin-top: 16px;" onclick="openAddBizAppModal()">
                   <i data-lucide="plus" width="15" height="15"></i>
                   <span>新增应用</span>
@@ -4453,6 +5244,7 @@
        ==================================================== */
     let processDraft = null;
     let selectedNodeId = null;
+    let selectedFieldId = null;
 
     function openProcessInfoModal(opts) {
       processDraft = {
@@ -4553,34 +5345,120 @@
     function genNodeId() {
       return 'n_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
     }
-
-    function nodeTypeMeta(type) {
-      const map = {
-        start: { icon: 'flag', color: '#2f80ed', label: '开始' },
-        approve: { icon: 'user-check', color: '#1677ff', label: '审批节点' },
-        notify: { icon: 'bell', color: '#fa8c16', label: '通知节点' },
-        summary: { icon: 'layers', color: '#52c41a', label: '汇总节点' },
-        end: { icon: 'flag-off', color: '#8c8c8c', label: '结束' }
-      };
-      return map[type] || map.approve;
+    function genFieldId() {
+      return 'f_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
     }
 
-    function defaultProcessNodes(direction) {
-      const startLabel = direction === '上报' ? '发起上报' : '发起下发';
-      const midType1 = direction === '上报' ? 'approve' : 'approve';
-      const midName1 = direction === '上报' ? '审核' : '审批';
-      const midType2 = direction === '上报' ? 'summary' : 'notify';
-      const midName2 = direction === '上报' ? '结果汇总' : '下发通知';
+    /* ---- Field type meta (Step 1: 表单配置) ---- */
+    function fieldTypeMeta(type) {
+      const map = {
+        text: { icon: 'type', label: '单行文本' },
+        textarea: { icon: 'align-left', label: '多行文本' },
+        date: { icon: 'calendar', label: '日期选择' },
+        select: { icon: 'chevron-down-circle', label: '下拉单选' },
+        file: { icon: 'paperclip', label: '附件上传' },
+        number: { icon: 'hash', label: '数字输入' }
+      };
+      return map[type] || map.text;
+    }
+
+    const FIELD_PALETTE = [
+      { type: 'text', desc: '用于输入简短的标题、姓名等信息' },
+      { type: 'textarea', desc: '用于输入详细描述、反馈等长文本' },
+      { type: 'date', desc: '用于记录发生时间、截止时间等' },
+      { type: 'select', desc: '从预设选项列表中单选一项' },
+      { type: 'file', desc: '支持上传图片、文档、音视频等佐证材料' },
+      { type: 'number', desc: '用于输入涉事人数、金额等数值' }
+    ];
+
+    function defaultFormFields(direction, category) {
+      const isReport = direction === '上报';
+      if (category === '错误表述') {
+        return [
+          { id: genFieldId(), type: 'text', label: '差错标题', placeholder: '请输入差错简要标题', required: true, help: '简明提炼差错事项核心内容' },
+          { id: genFieldId(), type: 'date', label: '发现/核实时间', placeholder: '请选择核实时间', required: true, help: '首次发现或核实的基准时间' },
+          { id: genFieldId(), type: 'select', label: '差错来源渠道', placeholder: '请选择第一发现渠道', required: true, help: '如实选择第一信息来源' },
+          { id: genFieldId(), type: 'select', label: '差错级别', placeholder: '请评估差错等级', required: true, help: '根据影响范围与性质综合评定' },
+          { id: genFieldId(), type: 'text', label: '涉及文件/载体', placeholder: '请输入涉及的文件、载体名称', required: false, help: '便于追溯核查取证' },
+          { id: genFieldId(), type: 'textarea', label: '差错主要内容与焦点', placeholder: '客观概述差错内容与核心问题...', required: true, help: '符合政务差错采集规范' },
+          { id: genFieldId(), type: 'select', label: '涉及部门/责任科室', placeholder: '请选择责任科室', required: true, help: '确定后续办理主体' },
+          { id: genFieldId(), type: 'number', label: '涉及人数/影响范围', placeholder: '请输入预估影响人数', required: false, help: '用于评估处置优先级' },
+          { id: genFieldId(), type: 'file', label: '佐证材料附件', placeholder: '支持上传截图、文档等材料', required: false, help: '支持上传图片、文档、音视频等' }
+        ];
+      }
       return [
-        { id: 'start', type: 'start', name: startLabel, config: { initiator: '机构管理员' } },
-        { id: genNodeId(), type: midType1, name: midName1, config: { handler: '', timeLimit: 24, needReceipt: '是' } },
-        { id: genNodeId(), type: midType2, name: midName2, config: midType2 === 'summary' ? { method: '自动汇总' } : { target: '' } },
-        { id: 'end', type: 'end', name: '流程结束', config: {} }
+        { id: genFieldId(), type: 'text', label: '舆情标题', placeholder: '请输入舆情简要标题（例如：某片区涉企政务服务引发现网关切）', required: true, help: '简明提炼涉事事件核心焦点与发生地' },
+        { id: genFieldId(), type: 'date', label: isReport ? '发现/上报时间' : '发现/监测时间', placeholder: '请选择监测发现时间', required: true, help: '首发预警或监测发现的基准时间' },
+        { id: genFieldId(), type: 'select', label: '舆情来源渠道', placeholder: '请选择主要涉事平台', required: true, help: '请如实选择第一信息发源或主要传播途径' },
+        { id: genFieldId(), type: 'select', label: '舆情预警级别', placeholder: '请评估初核预警级别', required: true, help: '根据扩散传播速率与社会影响审定' },
+        { id: genFieldId(), type: 'text', label: '原帖链接 / 涉事账号', placeholder: '请输入首发贴文网页链接或涉事发布主体账号', required: false, help: '便于责任单位溯源核查取证' },
+        { id: genFieldId(), type: 'textarea', label: '舆情主要内容与焦点', placeholder: '客观概述涉事主要事实、网民核心质疑点与当前扩散态势...', required: true, help: '符合政务舆情采集规范' },
+        { id: genFieldId(), type: 'select', label: '涉及部门/责任科室', placeholder: '请选择对口责任科室', required: true, help: '确定后续办理主体' },
+        { id: genFieldId(), type: 'number', label: '涉及人数/影响范围', placeholder: '请输入预估传播人数或影响范围', required: false, help: '用于评估处置优先级与预警等级' },
+        { id: genFieldId(), type: 'file', label: '佐证材料附件', placeholder: '支持上传截图、文档等材料', required: false, help: '支持上传图片、文档、音视频等佐证材料' }
+      ];
+    }
+
+    /* ---- Node type meta (Step 2: 流程配置) ---- */
+    function nodeTypeMeta(type) {
+      const map = {
+        start: { icon: 'flag', color: '#2f80ed', label: '开始', tag: '发起填报', tagColor: '#52c41a' },
+        handle: { icon: 'wrench', color: '#1677ff', label: '办理节点', tag: '现场处置', tagColor: '#1677ff' },
+        approve: { icon: 'user-check', color: '#fa8c16', label: '审批节点', tag: '人工审核', tagColor: '#d46b08' },
+        branch: { icon: 'git-branch', color: '#722ed1', label: '条件分支', tag: '自动分流', tagColor: '#722ed1' },
+        cc: { icon: 'send', color: '#13c2c2', label: '抄送节点', tag: '知会告知', tagColor: '#13c2c2' },
+        end: { icon: 'flag-off', color: '#475569', label: '结束', tag: '流程办结', tagColor: '#334155' }
+      };
+      return map[type] || map.handle;
+    }
+
+    const NODE_LIBRARY = [
+      { type: 'handle', title: '办理节点 (支持转办)', sub: '指派责任科室或承办人...' },
+      { type: 'approve', title: '审批节点 (通过/驳回)', sub: '创建人或科室领导验收...' },
+      { type: 'branch', title: '条件分支', sub: '根据预警级别、差错严...' },
+      { type: 'cc', title: '抄送节点', sub: '将处置进展与整改通告...' }
+    ];
+
+    function defaultProcessNodes(direction, category) {
+      const isReport = direction === '上报';
+      const subject = isReport ? '承办单位 / 科室' : '对口责任科室 / 承办人员';
+      return [
+        {
+          id: 'start', type: 'start',
+          name: isReport ? '创建人发起上报事项' : '创建人发起与处置要求',
+          desc: isReport
+            ? '由创建人登记事项基本信息，明确上报口径、核实重点与办理时限'
+            : '由创建人登记业务基本信息，并明确具体处置要求、核查重点与办理时限',
+          subjectType: '指定个人', subjects: ['创建人本人'], allowTransfer: false, timeLimit: 0, signMode: ''
+        },
+        {
+          id: genNodeId(), type: 'handle',
+          name: isReport ? '承办单位核实上报' : '处理人核查处置',
+          desc: isReport
+            ? '承办单位/科室核实事项并录入上报材料；如权责不符可申请转办至其他单位'
+            : '对口责任科室/承办处理人落地处置并录入反馈；如权责不符可申请转办至其他单位',
+          subjectType: '业务部门', subjects: [subject], allowTransfer: true, timeLimit: 4, signMode: '或签（一名通过即生效）'
+        },
+        {
+          id: genNodeId(), type: 'approve',
+          name: '创建人复核审批',
+          desc: '创建人验收处置成效：审核通过则办结归档；审核驳回则退回处理人重新处置整改',
+          subjectType: '指定个人', subjects: ['创建人本人'], allowTransfer: false, timeLimit: 2, signMode: '或签（一名通过即生效）'
+        },
+        {
+          id: 'end', type: 'end',
+          name: '办结归档',
+          desc: '创建人验收审批通过，处置闭环入库形成台账记录',
+          subjectType: '', subjects: [], allowTransfer: false, timeLimit: 0, signMode: ''
+        }
       ];
     }
 
     function openProcessDesigner() {
-      if (!processDraft.nodes) processDraft.nodes = defaultProcessNodes(processDraft.direction);
+      if (!processDraft.formFields) processDraft.formFields = defaultFormFields(processDraft.direction, processDraft.category);
+      if (!processDraft.nodes) processDraft.nodes = defaultProcessNodes(processDraft.direction, processDraft.category);
+      if (!processDraft.step) processDraft.step = 1;
+      selectedFieldId = processDraft.formFields[0] ? processDraft.formFields[0].id : null;
       const midNode = processDraft.nodes.find(n => n.type !== 'start' && n.type !== 'end');
       selectedNodeId = midNode ? midNode.id : null;
 
@@ -4603,41 +5481,316 @@
       }
       processDraft = null;
       selectedNodeId = null;
+      selectedFieldId = null;
+    }
+
+    function genProcessCode(d) {
+      if (!d.code) {
+        d.code = 'WF-' + (d.direction === '上报' ? 'SB' : 'XF') + '-' + String(Math.floor(100 + Math.random() * 900));
+      }
+      return d.code;
     }
 
     function renderProcessDesignerHtml() {
       const d = processDraft;
+      const fieldCount = (d.formFields || []).length;
+      const nodeCount = (d.nodes || []).length;
       return `
         <div class="pd-topbar">
           <div class="pd-topbar-left">
             <button class="pd-back-btn" onclick="exitProcessDesigner()" title="返回">
               <i data-lucide="arrow-left" width="16" height="16"></i>
+              <span style="font-size:12px;margin-left:4px;">流程列表</span>
             </button>
-            <div class="pd-title-block">
-              <span class="pd-title-name">${d.name || '未命名流程'}</span>
-              <span class="pd-title-tag ${d.direction === '上报' ? 'up' : 'down'}">${d.direction}</span>
+            <span class="pd-doc-icon"><i data-lucide="file-text" width="15" height="15"></i></span>
+            <span class="pd-title-name">${d.name || '未命名流程'}</span>
+            <span class="pd-code-badge">${genProcessCode(d)}</span>
+            <span class="pd-tag-badge">${d.scope === 'org' ? '机构模板' : '政务标准版'}</span>
+            <span class="pd-saved-status"><i data-lucide="check-circle-2" width="13" height="13"></i>已保存至列表</span>
+          </div>
+          <div class="pd-steps">
+            <div class="pd-step-item ${d.step === 1 ? 'active' : 'done'}" onclick="goToDesignerStep(1)">
+              <span class="pd-step-num">${d.step === 1 ? '1' : '<i data-lucide="check" width="11" height="11"></i>'}</span>
+              <span>表单配置</span><span class="pd-step-count">${fieldCount}项</span>
+            </div>
+            <i data-lucide="chevron-right" width="14" height="14" class="pd-step-arrow"></i>
+            <div class="pd-step-item ${d.step === 2 ? 'active' : ''}" onclick="goToDesignerStep(2)">
+              <span class="pd-step-num">2</span>
+              <span><i data-lucide="git-fork" width="11" height="11" style="vertical-align:-1px;margin-right:2px;"></i>流程配置</span><span class="pd-step-count">${nodeCount}节</span>
             </div>
           </div>
           <div class="pd-topbar-right">
-            <button class="btn btn-default" onclick="previewProcessDesign()">
-              <i data-lucide="eye" width="14" height="14"></i>
-              <span>预览</span>
-            </button>
-            <button class="btn btn-primary" onclick="publishProcessDesign()">
-              <i data-lucide="rocket" width="14" height="14"></i>
-              <span>发布</span>
-            </button>
+            ${d.step === 1 ? `
+              <button class="btn btn-default" onclick="restoreProcessSample()"><i data-lucide="rotate-ccw" width="14" height="14"></i><span>恢复示例</span></button>
+              <button class="btn btn-default" style="color:#ff4d4f;border-color:#ffccc7;" onclick="clearProcessFields()"><i data-lucide="trash-2" width="14" height="14"></i><span>清空</span></button>
+              <button class="btn btn-default" onclick="saveProcessDraft()"><i data-lucide="save" width="14" height="14"></i><span>保存</span></button>
+              <button class="btn btn-primary" onclick="goToDesignerStep(2)"><span>下一步：流程配置</span><i data-lucide="arrow-right" width="14" height="14"></i></button>
+              <button class="btn btn-default" onclick="previewProcessDesign()"><i data-lucide="eye" width="14" height="14"></i><span>预览</span></button>
+            ` : `
+              <button class="btn btn-default" onclick="goToDesignerStep(1)"><i data-lucide="arrow-left" width="14" height="14"></i><span>返回表单</span></button>
+              <button class="btn btn-default" onclick="saveProcessDraft()"><i data-lucide="save" width="14" height="14"></i><span>保存</span></button>
+              <button class="btn btn-default" onclick="previewProcessDesign()"><i data-lucide="eye" width="14" height="14"></i><span>预览</span></button>
+              <button class="btn btn-primary" onclick="publishProcessDesign()"><i data-lucide="rocket" width="14" height="14"></i><span>发布</span></button>
+            `}
           </div>
         </div>
-        <div class="pd-body" onclick="closeAllInsertMenus()">
-          <div class="pd-canvas-wrap">
-            <div class="pd-canvas">
-              ${renderProcessNodesHtml()}
-            </div>
+        <div class="pd-body3" onclick="closeAllInsertMenus()">
+          ${d.step === 1 ? renderFormConfigStep() : renderFlowConfigStep()}
+        </div>
+      `;
+    }
+
+    function goToDesignerStep(step) {
+      processDraft.step = step;
+      const root = document.getElementById('processDesignerRoot');
+      if (root) root.innerHTML = renderProcessDesignerHtml();
+      lucide.createIcons();
+    }
+
+    function saveProcessDraft() {
+      showToast('已保存至列表');
+    }
+
+    function restoreProcessSample() {
+      processDraft.formFields = defaultFormFields(processDraft.direction, processDraft.category);
+      selectedFieldId = processDraft.formFields[0] ? processDraft.formFields[0].id : null;
+      refreshFormConfigStep();
+      showToast('已恢复示例表单');
+    }
+
+    function clearProcessFields() {
+      processDraft.formFields = [];
+      selectedFieldId = null;
+      refreshFormConfigStep();
+    }
+
+    /* ============ Step 1: 表单配置 ============ */
+    function renderFormConfigStep() {
+      return `
+        <div class="pd-palette">
+          <div class="pd-palette-header"><i data-lucide="layers" width="16" height="16"></i><span>常用表单控件</span><span class="pd-palette-count">${FIELD_PALETTE.length}个</span></div>
+          <div class="pd-palette-hint"><i data-lucide="info" width="13" height="13"></i><span>点击控件即可追加至表单末尾，或按需调整顺序与属性。</span></div>
+          <div class="pd-palette-grid">
+            ${FIELD_PALETTE.map(f => {
+              const meta = fieldTypeMeta(f.type);
+              return `
+                <div class="pd-palette-item" onclick="event.stopPropagation();addFormField('${f.type}')">
+                  <span class="pd-palette-item-icon"><i data-lucide="${meta.icon}" width="16" height="16"></i></span>
+                  <span class="pd-palette-item-label">${meta.label}</span>
+                </div>
+              `;
+            }).join('')}
           </div>
-          <div class="pd-side-panel">
-            ${renderProcessSidePanel()}
+          <div class="pd-palette-sub">控件适用说明</div>
+          <div class="pd-palette-help-list">
+            ${FIELD_PALETTE.map(f => `<div class="pd-palette-help-item"><b>${fieldTypeMeta(f.type).label}</b><span>${f.desc}</span></div>`).join('')}
           </div>
+          <div class="pd-palette-footnote">符合政务舆情采集规范</div>
+        </div>
+        <div class="pd-form-canvas-wrap">
+          <div class="pd-form-card">
+            ${renderFormFieldsHtml()}
+          </div>
+        </div>
+        <div class="pd-panel">
+          ${renderFormFieldPanel()}
+        </div>
+      `;
+    }
+
+    function refreshFormConfigStep() {
+      const root = document.getElementById('processDesignerRoot');
+      if (root) root.innerHTML = renderProcessDesignerHtml();
+      lucide.createIcons();
+    }
+
+    function renderFormFieldsHtml() {
+      const fields = processDraft.formFields || [];
+      const d = processDraft;
+      const catLabel = d.category === '错误表述' ? '差错上报单' : '舆情上报单';
+      const catDesc = d.category === '错误表述'
+        ? '用于单位政务差错事项登记、核实研判与协同处置流程，标 * 项为必填项。'
+        : '用于单位网络舆情事件登记、研判分析与协同处置流程，标 * 项为必填项。';
+      return `
+        <div class="pd-form-card-top">
+          <div>
+            <span class="pd-form-badge"><i data-lucide="shield-check" width="12" height="12"></i>统一规范表单模板</span>
+          </div>
+          <span class="pd-form-code">编号：${d.category === '错误表述' ? 'CW' : 'YQ'}-FORM-${new Date().getFullYear()}</span>
+        </div>
+        <div class="pd-form-title">${catLabel}</div>
+        <div class="pd-form-desc">${catDesc}</div>
+        ${fields.map((field, idx) => renderFormFieldCard(field, idx, fields.length)).join('')}
+        ${fields.length === 0 ? `<div style="text-align:center;padding:60px 0;color:#94a3b8;font-size:13px;">暂无表单字段，请从左侧控件面板添加</div>` : ''}
+      `;
+    }
+
+    function renderFormFieldCard(field, idx, total) {
+      const meta = fieldTypeMeta(field.type);
+      const selected = field.id === selectedFieldId;
+      const inputHtml = field.type === 'textarea'
+        ? `<div class="pd-form-field-fake-input textarea">${field.placeholder || ''}</div>`
+        : `<div class="pd-form-field-fake-input">${field.placeholder || ''}</div>`;
+      return `
+        <div class="pd-form-field ${selected ? 'selected' : ''}" onclick="event.stopPropagation();selectFormField('${field.id}')">
+          <span class="pd-form-field-drag"><i data-lucide="grip-vertical" width="14" height="14"></i></span>
+          <div class="pd-form-field-toolbar" onclick="event.stopPropagation();">
+            <span class="pd-form-field-toolbar-label">${meta.label}</span>
+            <button onclick="moveFormField('${field.id}',-1)" title="上移" ${idx === 0 ? 'disabled style="opacity:.35;cursor:not-allowed;"' : ''}><i data-lucide="chevron-up" width="12" height="12"></i></button>
+            <button onclick="moveFormField('${field.id}',1)" title="下移" ${idx === total - 1 ? 'disabled style="opacity:.35;cursor:not-allowed;"' : ''}><i data-lucide="chevron-down" width="12" height="12"></i></button>
+            <button onclick="duplicateFormField('${field.id}')" title="复制"><i data-lucide="copy" width="12" height="12"></i></button>
+            <button class="danger" onclick="deleteFormField('${field.id}')" title="删除"><i data-lucide="trash-2" width="12" height="12"></i></button>
+          </div>
+          <div class="pd-form-field-label">${field.required ? '<span class=\"req\">*</span>' : ''}${field.label}</div>
+          ${inputHtml}
+          ${field.help ? `<div class="pd-form-field-help">${field.help}</div>` : ''}
+        </div>
+      `;
+    }
+
+    function renderFormFieldPanel() {
+      const fields = processDraft.formFields || [];
+      const field = fields.find(f => f.id === selectedFieldId);
+      if (!field) {
+        return `
+          <div class="pd-side-empty" style="height:100%;">
+            <i data-lucide="mouse-pointer-click" width="28" height="28"></i>
+            <p>点击画布中的字段<br>查看和编辑字段属性</p>
+          </div>
+        `;
+      }
+      const meta = fieldTypeMeta(field.type);
+      return `
+        <div class="pd-panel-header"><i data-lucide="${meta.icon}" width="16" height="16" style="color:#1677ff;"></i><span>${meta.label}</span><span class="pd-panel-id">ID: ${field.id.slice(-8)}</span></div>
+        <div class="pd-panel-divider"></div>
+        <div class="pd-panel-row">
+          <div class="pd-panel-label-row"><span class="pd-panel-label">字段名称</span><span class="pd-panel-label-hint">显示在表单前</span></div>
+          <input class="pd-panel-input" value="${field.label}" oninput="updateFormField('${field.id}','label',this.value)">
+        </div>
+        <div class="pd-panel-row">
+          <div class="pd-panel-label-row"><span class="pd-panel-label">占位提示文字</span><span class="pd-panel-label-hint">引导填报</span></div>
+          <input class="pd-panel-input" value="${field.placeholder || ''}" oninput="updateFormField('${field.id}','placeholder',this.value)">
+        </div>
+        <div class="pd-toggle-row">
+          <div class="pd-toggle-row-text">
+            <span class="pd-toggle-row-title">是否必填项</span>
+            <span class="pd-toggle-row-sub">提交时未填将阻止上报并标红提示</span>
+          </div>
+          <span class="pd-toggle ${field.required ? 'on' : ''}" onclick="toggleFormFieldRequired('${field.id}')"><span class="pd-toggle-dot"></span></span>
+        </div>
+        <div class="pd-panel-row">
+          <div class="pd-panel-label-row"><span class="pd-panel-label">帮助说明文本</span><span class="pd-panel-label-hint">辅助说明（选填）</span></div>
+          <textarea class="pd-panel-input" rows="2" oninput="updateFormField('${field.id}','help',this.value)">${field.help || ''}</textarea>
+        </div>
+        <div class="pd-panel-note"><i data-lucide="info" width="13" height="13"></i><span>修改属性将实时同步至中间画布和模拟预览窗口。</span></div>
+        <button class="pd-panel-delete-btn" onclick="deleteFormField('${field.id}')"><i data-lucide="trash-2" width="14" height="14"></i>删除该字段</button>
+      `;
+    }
+
+    function refreshFormCanvasAndPanel() {
+      const wrap = document.querySelector('.pd-form-card');
+      if (wrap) wrap.innerHTML = renderFormFieldsHtml();
+      const panel = document.querySelector('.pd-panel');
+      if (panel) panel.innerHTML = renderFormFieldPanel();
+      lucide.createIcons();
+      const header = document.querySelector('.pd-step-item.active .pd-step-count');
+      if (header) header.textContent = `${(processDraft.formFields || []).length}项`;
+    }
+
+    function addFormField(type) {
+      const meta = fieldTypeMeta(type);
+      const newField = { id: genFieldId(), type, label: meta.label, placeholder: `请输入${meta.label}`, required: false, help: '' };
+      if (!processDraft.formFields) processDraft.formFields = [];
+      processDraft.formFields.push(newField);
+      selectedFieldId = newField.id;
+      refreshFormCanvasAndPanel();
+    }
+
+    function selectFormField(id) {
+      selectedFieldId = id;
+      refreshFormCanvasAndPanel();
+    }
+
+    function updateFormField(id, key, val) {
+      const field = (processDraft.formFields || []).find(f => f.id === id);
+      if (field) field[key] = val;
+      const wrap = document.querySelector('.pd-form-card');
+      if (wrap) wrap.innerHTML = renderFormFieldsHtml();
+      lucide.createIcons();
+    }
+
+    function toggleFormFieldRequired(id) {
+      const field = (processDraft.formFields || []).find(f => f.id === id);
+      if (field) field.required = !field.required;
+      refreshFormCanvasAndPanel();
+    }
+
+    function deleteFormField(id) {
+      processDraft.formFields = (processDraft.formFields || []).filter(f => f.id !== id);
+      if (selectedFieldId === id) selectedFieldId = processDraft.formFields[0] ? processDraft.formFields[0].id : null;
+      refreshFormCanvasAndPanel();
+    }
+
+    function duplicateFormField(id) {
+      const fields = processDraft.formFields || [];
+      const idx = fields.findIndex(f => f.id === id);
+      if (idx === -1) return;
+      const copy = JSON.parse(JSON.stringify(fields[idx]));
+      copy.id = genFieldId();
+      copy.label = copy.label + ' (副本)';
+      fields.splice(idx + 1, 0, copy);
+      selectedFieldId = copy.id;
+      refreshFormCanvasAndPanel();
+    }
+
+    function moveFormField(id, dir) {
+      const fields = processDraft.formFields || [];
+      const idx = fields.findIndex(f => f.id === id);
+      const newIdx = idx + dir;
+      if (idx === -1 || newIdx < 0 || newIdx >= fields.length) return;
+      const [item] = fields.splice(idx, 1);
+      fields.splice(newIdx, 0, item);
+      refreshFormCanvasAndPanel();
+    }
+
+    /* ============ Step 2: 流程配置 ============ */
+    function renderFlowConfigStep() {
+      return `
+        <div class="pd-palette">
+          <div class="pd-palette-header"><i data-lucide="git-fork" width="16" height="16"></i><span>流转节点库</span><span class="pd-palette-count">${NODE_LIBRARY.length}个节点</span></div>
+          <div class="pd-palette-hint"><i data-lucide="info" width="13" height="13"></i><span>点击节点库中的类型即可插入至画布末尾节点之前，或点击画布中的“+”指定位置插入。</span></div>
+          <div class="pd-palette-sub">政务审批流节点</div>
+          ${NODE_LIBRARY.map(lib => {
+            const meta = nodeTypeMeta(lib.type);
+            return `
+              <div class="pd-lib-item" onclick="event.stopPropagation();appendProcessNode('${lib.type}')">
+                <span class="pd-lib-item-icon" style="background:${meta.color}1a;color:${meta.color};"><i data-lucide="${meta.icon}" width="16" height="16"></i></span>
+                <div>
+                  <div class="pd-lib-item-title">${lib.title}</div>
+                  <div class="pd-lib-item-sub">${lib.sub}</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+          <div class="pd-palette-sub">政务协同流转规则</div>
+          <div class="pd-lib-rule-list">
+            <div class="pd-lib-rule-item"><span class="pd-lib-rule-dot" style="background:#fa8c16;"></span><span><b>审批节点：</b>支持会签（全员过审）、或签（一人即审）及限时超时预警。</span></div>
+            <div class="pd-lib-rule-item"><span class="pd-lib-rule-dot" style="background:#1677ff;"></span><span><b>办理节点：</b>指派执法巡查、综合治理或街道办进行线下核实。</span></div>
+            <div class="pd-lib-rule-item"><span class="pd-lib-rule-dot" style="background:#722ed1;"></span><span><b>条件分支：</b>结合舆情重要等级/舆情来源自动分流。</span></div>
+          </div>
+        </div>
+        <div class="pd-flow-canvas-wrap">
+          <div class="pd-flow-canvas-header">
+            <span class="dot"></span>
+            <span>点击节点卡片可在右侧配置审批人员、时限及流转分支</span>
+            <span class="count">共 ${(processDraft.nodes || []).length} 个流转环节</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;">
+            ${renderProcessNodesHtml()}
+          </div>
+        </div>
+        <div class="pd-panel">
+          ${renderProcessSidePanel()}
         </div>
       `;
     }
@@ -4649,35 +5802,59 @@
         const meta = nodeTypeMeta(node.type);
         const isFixed = node.type === 'start' || node.type === 'end';
         const selected = node.id === selectedNodeId;
+        const chips = buildNodeChips(node);
         html += `
-          <div class="pd-node ${selected ? 'selected' : ''}" onclick="event.stopPropagation();selectProcessNode('${node.id}')">
-            <div class="pd-node-icon" style="background:${meta.color}22;color:${meta.color};">
-              <i data-lucide="${meta.icon}" width="16" height="16"></i>
+          <div class="pd-flow-node ${selected ? 'selected' : ''}" onclick="event.stopPropagation();selectProcessNode('${node.id}')">
+            <div class="pd-flow-node-top">
+              <span class="pd-flow-node-icon" style="background:${meta.color}1a;color:${meta.color};"><i data-lucide="${meta.icon}" width="14" height="14"></i></span>
+              <span class="pd-flow-node-name">${node.name}</span>
+              <span class="pd-flow-node-tag" style="background:${meta.tagColor}1a;color:${meta.tagColor};">${meta.tag}</span>
+              ${!isFixed ? `<span class="pd-flow-node-drag"><i data-lucide="grip-vertical" width="14" height="14"></i></span>` : ''}
             </div>
-            <div class="pd-node-body">
-              <span class="pd-node-type">${meta.label}</span>
-              <span class="pd-node-name">${node.name}</span>
+            <div class="pd-flow-node-desc">${node.desc || ''}</div>
+            <div class="pd-flow-node-chips">
+              ${chips.map(c => `<span class="pd-flow-node-chip ${c.color}"><i data-lucide="${c.icon}" width="10" height="10"></i>${c.text}</span>`).join('')}
             </div>
-            ${!isFixed ? `<button type="button" class="pd-node-del" onclick="event.stopPropagation();deleteProcessNode('${node.id}')" title="删除节点"><i data-lucide="x" width="13" height="13"></i></button>` : ''}
+            ${!isFixed ? `<button type="button" class="pd-flow-node-del" onclick="event.stopPropagation();deleteProcessNode('${node.id}')" title="删除节点"><i data-lucide="x" width="13" height="13"></i></button>` : ''}
           </div>
         `;
         if (idx < nodes.length - 1) {
           html += `
-            <div class="pd-connector">
+            <div class="pd-flow-connector">
               <div class="pd-connector-line"></div>
               <button type="button" class="pd-add-btn" onclick="event.stopPropagation();toggleInsertMenu(event, ${idx})" title="添加节点">
                 <i data-lucide="plus" width="14" height="14"></i>
               </button>
               <div class="pd-insert-menu" id="pdInsertMenu_${idx}">
+                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'handle')"><i data-lucide="wrench" width="14" height="14"></i><span>办理节点</span></div>
                 <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'approve')"><i data-lucide="user-check" width="14" height="14"></i><span>审批节点</span></div>
-                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'notify')"><i data-lucide="bell" width="14" height="14"></i><span>通知节点</span></div>
-                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'summary')"><i data-lucide="layers" width="14" height="14"></i><span>汇总节点</span></div>
+                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'branch')"><i data-lucide="git-branch" width="14" height="14"></i><span>条件分支</span></div>
+                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'cc')"><i data-lucide="send" width="14" height="14"></i><span>抄送节点</span></div>
               </div>
             </div>
           `;
         }
       });
       return html;
+    }
+
+    function buildNodeChips(node) {
+      if (node.type === 'start') {
+        return [{ icon: 'user', color: '', text: (node.subjects && node.subjects[0]) || '创建人本人' }];
+      }
+      if (node.type === 'end') {
+        return [{ icon: 'archive', color: '', text: '归档入库' }];
+      }
+      const chips = [];
+      chips.push({ icon: 'users', color: '', text: (node.subjects && node.subjects[0]) || '待指派' });
+      if (node.signMode) chips.push({ icon: 'check-check', color: 'orange', text: node.signMode });
+      if (node.timeLimit) chips.push({ icon: 'clock', color: 'red', text: `限时${node.timeLimit}h` });
+      if (node.type === 'handle' && node.allowTransfer) chips.push({ icon: 'repeat', color: 'blue', text: '处理人可转办' });
+      if (node.type === 'approve') {
+        chips.push({ icon: 'corner-up-left', color: 'red', text: '驳回退回处理人' });
+        chips.push({ icon: 'check', color: 'green', text: '通过即归档' });
+      }
+      return chips;
     }
 
     function toggleInsertMenu(e, idx) {
@@ -4693,13 +5870,28 @@
       document.querySelectorAll('.pd-insert-menu').forEach(m => m.classList.remove('show'));
     }
 
-    function insertProcessNode(afterIdx, type) {
+    function newNodeDefaults(type) {
       const meta = nodeTypeMeta(type);
-      const config = type === 'approve' ? { handler: '', timeLimit: 24, needReceipt: '是' }
-        : type === 'summary' ? { method: '自动汇总' }
-        : { target: '' };
-      const newNode = { id: genNodeId(), type, name: meta.label, config };
+      return {
+        id: genNodeId(), type, name: meta.label,
+        desc: '请填写该环节的处置说明与审批指引',
+        subjectType: '业务部门', subjects: [], allowTransfer: type === 'handle', timeLimit: 4,
+        signMode: type === 'approve' || type === 'handle' ? '或签（一名通过即生效）' : ''
+      };
+    }
+
+    function insertProcessNode(afterIdx, type) {
+      const newNode = newNodeDefaults(type);
       processDraft.nodes.splice(afterIdx + 1, 0, newNode);
+      selectedNodeId = newNode.id;
+      refreshProcessCanvas();
+    }
+
+    function appendProcessNode(type) {
+      const newNode = newNodeDefaults(type);
+      const endIdx = processDraft.nodes.findIndex(n => n.type === 'end');
+      const insertAt = endIdx === -1 ? processDraft.nodes.length : endIdx;
+      processDraft.nodes.splice(insertAt, 0, newNode);
       selectedNodeId = newNode.id;
       refreshProcessCanvas();
     }
@@ -4716,18 +5908,22 @@
     }
 
     function refreshProcessCanvas() {
-      const canvas = document.querySelector('.pd-canvas');
+      const canvas = document.querySelector('.pd-flow-canvas-wrap > div');
       if (canvas) canvas.innerHTML = renderProcessNodesHtml();
-      const side = document.querySelector('.pd-side-panel');
+      const countEl = document.querySelector('.pd-flow-canvas-header .count');
+      if (countEl) countEl.textContent = `共 ${(processDraft.nodes || []).length} 个流转环节`;
+      const stepCount = document.querySelectorAll('.pd-step-count')[1];
+      if (stepCount) stepCount.textContent = `${(processDraft.nodes || []).length}节`;
+      const side = document.querySelector('.pd-panel');
       if (side) side.innerHTML = renderProcessSidePanel();
       lucide.createIcons();
     }
 
     function renderProcessSidePanel() {
-      const node = processDraft.nodes.find(n => n.id === selectedNodeId);
+      const node = (processDraft.nodes || []).find(n => n.id === selectedNodeId);
       if (!node) {
         return `
-          <div class="pd-side-empty">
+          <div class="pd-side-empty" style="height:100%;">
             <i data-lucide="mouse-pointer-click" width="28" height="28"></i>
             <p>点击画布中的节点<br>查看和编辑节点属性</p>
           </div>
@@ -4735,61 +5931,104 @@
       }
       const meta = nodeTypeMeta(node.type);
       const isFixed = node.type === 'start' || node.type === 'end';
-      let fieldsHtml = '';
-      if (node.type === 'start') {
-        fieldsHtml = `
-          <div class="pd-field-row"><span class="pd-field-label">发起人</span><input class="pd-field-input" value="${node.config.initiator || '机构管理员'}" disabled></div>
-          <div class="pd-field-row"><span class="pd-field-label">流程流向</span><input class="pd-field-input" value="${processDraft.direction}" disabled></div>
-        `;
-      } else if (node.type === 'end') {
-        fieldsHtml = `<div class="pd-field-row"><span class="pd-field-label">说明</span><input class="pd-field-input" value="流程结束节点，不可编辑" disabled></div>`;
-      } else if (node.type === 'approve') {
-        fieldsHtml = `
-          <div class="pd-field-row"><span class="pd-field-label">处理人</span><input class="pd-field-input" placeholder="请输入处理人/角色" value="${node.config.handler || ''}" oninput="updateNodeConfig('${node.id}','handler',this.value)"></div>
-          <div class="pd-field-row"><span class="pd-field-label">处理时限（小时）</span><input type="number" class="pd-field-input" value="${node.config.timeLimit || 24}" oninput="updateNodeConfig('${node.id}','timeLimit',this.value)"></div>
-          <div class="pd-field-row"><span class="pd-field-label">是否需回执</span>
-            <select class="pd-field-input" onchange="updateNodeConfig('${node.id}','needReceipt',this.value)">
-              <option value="是" ${node.config.needReceipt === '是' ? 'selected' : ''}>是</option>
-              <option value="否" ${node.config.needReceipt === '否' ? 'selected' : ''}>否</option>
-            </select>
+
+      if (isFixed) {
+        return `
+          <div class="pd-panel-header"><i data-lucide="${meta.icon}" width="16" height="16" style="color:${meta.color};"></i><span>${meta.label}节点</span><span class="pd-panel-id">ID: ${node.id}</span></div>
+          <div class="pd-panel-divider"></div>
+          <div class="pd-panel-row">
+            <div class="pd-panel-label-row"><span class="pd-panel-label">节点环节名称</span></div>
+            <input class="pd-panel-input" value="${node.name}" disabled>
           </div>
-        `;
-      } else if (node.type === 'notify') {
-        fieldsHtml = `<div class="pd-field-row"><span class="pd-field-label">通知对象</span><input class="pd-field-input" placeholder="请输入通知对象" value="${node.config.target || ''}" oninput="updateNodeConfig('${node.id}','target',this.value)"></div>`;
-      } else if (node.type === 'summary') {
-        fieldsHtml = `
-          <div class="pd-field-row"><span class="pd-field-label">汇总方式</span>
-            <select class="pd-field-input" onchange="updateNodeConfig('${node.id}','method',this.value)">
-              <option value="自动汇总" ${node.config.method === '自动汇总' ? 'selected' : ''}>自动汇总</option>
-              <option value="人工汇总" ${node.config.method === '人工汇总' ? 'selected' : ''}>人工汇总</option>
-            </select>
+          <div class="pd-panel-row">
+            <div class="pd-panel-label-row"><span class="pd-panel-label">说明</span></div>
+            <textarea class="pd-panel-input" rows="3" disabled>${node.desc || ''}</textarea>
           </div>
+          <div class="pd-panel-note"><i data-lucide="lock" width="13" height="13"></i><span>${node.type === 'start' ? '发起节点固定为创建人本人，不可编辑或删除。' : '结束节点为流程固定归档环节，不可编辑或删除。'}</span></div>
         `;
       }
+
+      const subjectTypes = ['职务角色', '业务部门', '指定个人'];
+      const quickAddOptions = node.type === 'approve'
+        ? ['创建人本人', '科室领导', '分管负责人']
+        : ['城管综合执法支队', '区应急管理局值班室', '属地街道办事处', '交警大队指挥中心', '生态环境分局'];
+
       return `
-        <div class="pd-side-header">
-          <span class="pd-side-icon" style="background:${meta.color}22;color:${meta.color};"><i data-lucide="${meta.icon}" width="15" height="15"></i></span>
-          <span>${meta.label}</span>
+        <div class="pd-panel-header"><i data-lucide="${meta.icon}" width="16" height="16" style="color:${meta.color};"></i><span>${meta.label}属性</span><span class="pd-panel-id">ID: ${node.id.slice(0,7)}</span></div>
+        <div class="pd-panel-divider"></div>
+        <div class="pd-panel-row">
+          <div class="pd-panel-label-row"><span class="pd-panel-label">节点环节名称</span></div>
+          <input class="pd-panel-input" value="${node.name}" oninput="updateNodeField('${node.id}','name',this.value)">
         </div>
-        <div class="pd-field-row">
-          <span class="pd-field-label">节点名称</span>
-          <input class="pd-field-input" value="${node.name}" ${isFixed ? 'disabled' : ''} oninput="updateNodeName('${node.id}',this.value)">
+        <div class="pd-panel-row">
+          <div class="pd-panel-label-row"><span class="pd-panel-label">处置说明 / 审批指引</span></div>
+          <textarea class="pd-panel-input" rows="3" oninput="updateNodeField('${node.id}','desc',this.value)">${node.desc || ''}</textarea>
         </div>
-        ${fieldsHtml}
+        <div class="pd-panel-row">
+          <div class="pd-panel-label-row"><span class="pd-panel-label">设置处理主体类型</span></div>
+          <div class="pd-subject-tabs">
+            ${subjectTypes.map(t => `<span class="pd-subject-tab ${node.subjectType === t ? 'active' : ''}" onclick="updateNodeField('${node.id}','subjectType','${t}')">${t}</span>`).join('')}
+          </div>
+          <div class="pd-panel-label-row"><span class="pd-panel-label" style="font-size:12px;color:#94a3b8;font-weight:400;">当前已指派主体：</span><span class="pd-panel-label-hint">${(node.subjects||[]).length}个</span></div>
+          <div class="pd-subject-tags">
+            ${(node.subjects || []).map(s => `<span class="pd-subject-tag">${s}<i data-lucide="x" width="11" height="11" onclick="removeNodeSubject('${node.id}','${s.replace(/'/g,"\\'")}')"></i></span>`).join('') || '<span style="font-size:12px;color:#cbd5e1;">暂未指派，请从下方快捷添加</span>'}
+          </div>
+          <div class="pd-quick-add-label">快捷添加候选部门/角色：</div>
+          <div class="pd-quick-add-btns">
+            ${quickAddOptions.map(o => `<span class="pd-quick-add-btn" onclick="addNodeSubject('${node.id}','${o.replace(/'/g,"\\'")}')">+ ${o}</span>`).join('')}
+          </div>
+        </div>
+        <div class="pd-toggle-row">
+          <div class="pd-toggle-row-text">
+            <span class="pd-toggle-row-title">允许处理人转办</span>
+            <span class="pd-toggle-row-sub">若涉及跨部门或非本权责，处理人可申请转办</span>
+          </div>
+          <span class="pd-toggle ${node.allowTransfer ? 'on' : ''}" onclick="toggleNodeTransfer('${node.id}')"><span class="pd-toggle-dot"></span></span>
+        </div>
+        <div class="pd-panel-row">
+          <div class="pd-panel-label-row"><span class="pd-panel-label">审批时效限制（小时）</span><span class="pd-panel-label-hint">政务响应考核</span></div>
+          <div class="pd-input-suffix-row">
+            <input type="number" min="0" class="pd-panel-input" value="${node.timeLimit || 0}" oninput="updateNodeField('${node.id}','timeLimit',this.value)">
+            <span class="pd-input-suffix-text">小时内未办自动短信催办</span>
+          </div>
+        </div>
+        <button class="pd-panel-delete-btn" onclick="deleteProcessNode('${node.id}')"><i data-lucide="trash-2" width="14" height="14"></i>删除当前流转节点</button>
       `;
     }
 
-    function updateNodeConfig(id, key, val) {
-      const node = processDraft.nodes.find(n => n.id === id);
-      if (node) node.config[key] = val;
+    function updateNodeField(id, key, val) {
+      const node = (processDraft.nodes || []).find(n => n.id === id);
+      if (!node) return;
+      node[key] = key === 'timeLimit' ? Number(val) || 0 : val;
+      const canvas = document.querySelector('.pd-flow-canvas-wrap > div');
+      if (canvas) canvas.innerHTML = renderProcessNodesHtml();
+      if (key === 'subjectType') {
+        const side = document.querySelector('.pd-panel');
+        if (side) side.innerHTML = renderProcessSidePanel();
+      }
+      lucide.createIcons();
     }
 
-    function updateNodeName(id, val) {
-      const node = processDraft.nodes.find(n => n.id === id);
-      if (node) node.name = val;
-      const canvas = document.querySelector('.pd-canvas');
-      if (canvas) canvas.innerHTML = renderProcessNodesHtml();
-      lucide.createIcons();
+    function addNodeSubject(id, subject) {
+      const node = (processDraft.nodes || []).find(n => n.id === id);
+      if (!node) return;
+      if (!node.subjects) node.subjects = [];
+      if (!node.subjects.includes(subject)) node.subjects.push(subject);
+      refreshProcessCanvas();
+    }
+
+    function removeNodeSubject(id, subject) {
+      const node = (processDraft.nodes || []).find(n => n.id === id);
+      if (!node) return;
+      node.subjects = (node.subjects || []).filter(s => s !== subject);
+      refreshProcessCanvas();
+    }
+
+    function toggleNodeTransfer(id) {
+      const node = (processDraft.nodes || []).find(n => n.id === id);
+      if (!node) return;
+      node.allowTransfer = !node.allowTransfer;
+      refreshProcessCanvas();
     }
 
     function exitProcessDesigner() {
@@ -4811,19 +6050,25 @@
     }
 
     function previewProcessDesign() {
-      const nodes = processDraft.nodes;
+      const nodes = processDraft.nodes || [];
+      const fields = processDraft.formFields || [];
       openModalCustom(`
-        <div class="mt-modal-inner" style="max-width: 480px; width: 480px;">
+        <div class="mt-modal-inner" style="max-width: 520px; width: 520px;">
           <div class="mt-modal-header">
             <h3 class="mt-modal-title">流程预览</h3>
             <button class="mt-modal-close" onclick="closeModal()">✕</button>
           </div>
           <div class="mt-modal-body">
-            <div style="margin-bottom:16px;">
+            <div style="margin-bottom:18px;">
               <div style="font-size:15px; font-weight:700; color:#1e293b;">${processDraft.name || '未命名流程'}</div>
-              <div style="font-size:12px; color:#8c8c8c; margin-top:4px;">${processDraft.direction} · ${processDraft.category || '-'}</div>
+              <div style="font-size:12px; color:#8c8c8c; margin-top:4px;">${processDraft.direction} · ${processDraft.category || '-'} · 表单${fields.length}项 · 流程${nodes.length}节</div>
               ${processDraft.desc ? `<div style="font-size:13px; color:#595959; margin-top:8px;">${processDraft.desc}</div>` : ''}
             </div>
+            <div style="font-size:13px; font-weight:600; color:#334155; margin-bottom:8px;">表单字段</div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;">
+              ${fields.map(f => `<span style="font-size:12px; padding:3px 9px; border-radius:999px; background:#f1f5f9; color:#475569;">${f.required ? '<span style=\'color:#ff4d4f\'>*</span>' : ''}${f.label}</span>`).join('') || '<span style="font-size:12px;color:#cbd5e1;">暂无字段</span>'}
+            </div>
+            <div style="font-size:13px; font-weight:600; color:#334155; margin-bottom:8px;">流程流向</div>
             <div class="pd-preview-path">
               ${nodes.map((n, i) => {
                 const meta = nodeTypeMeta(n.type);
@@ -4868,7 +6113,8 @@
           direction: processDraft.direction,
           desc: processDraft.desc,
           status: '已发布',
-          nodes: JSON.parse(JSON.stringify(processDraft.nodes))
+          nodes: JSON.parse(JSON.stringify(processDraft.nodes)),
+          formFields: JSON.parse(JSON.stringify(processDraft.formFields || []))
         };
         const existingIdx = state.orgDetail.templates.list.findIndex(t => t.id === processDraft.id);
         if (existingIdx >= 0) {
@@ -4887,7 +6133,8 @@
           direction: processDraft.direction,
           desc: processDraft.desc,
           status: '已发布',
-          nodes: JSON.parse(JSON.stringify(processDraft.nodes))
+          nodes: JSON.parse(JSON.stringify(processDraft.nodes)),
+          formFields: JSON.parse(JSON.stringify(processDraft.formFields || []))
         };
         const existingIdx = state.templates.findIndex(t => t.id === processDraft.id);
         if (existingIdx >= 0) {
@@ -4916,7 +6163,9 @@
           desc: t.desc || '',
           scope: 'common',
           org: '',
-          nodes: JSON.parse(JSON.stringify(t.nodes))
+          step: 1,
+          nodes: JSON.parse(JSON.stringify(t.nodes)),
+          formFields: t.formFields ? JSON.parse(JSON.stringify(t.formFields)) : null
         };
         openProcessDesigner();
         return;
@@ -4978,7 +6227,7 @@
               </div>
             </div>
             <div class="mt-modal-row" style="margin-bottom: 16px;">
-              <span class="mt-col-label" style="white-space: nowrap; text-align: right; color: #595959; width: 72px; min-width: 72px;">模板ID</span>
+              <span class="mt-col-label" style="white-space: nowrap; text-align: right; color: #595959; width: 72px; min-width: 72px;">模��ID</span>
               <div style="flex:1;">
                 <input type="text" class="mt-input-text" value="${t.id}" disabled style="background:#f5f5f5; color:#8c8c8c; cursor:not-allowed; border-color:#e8e8e8;">
               </div>
@@ -7717,7 +8966,9 @@
           desc: tpl.desc || '',
           scope: 'org',
           org: tpl.org,
-          nodes: JSON.parse(JSON.stringify(tpl.nodes))
+          step: 1,
+          nodes: JSON.parse(JSON.stringify(tpl.nodes)),
+          formFields: tpl.formFields ? JSON.parse(JSON.stringify(tpl.formFields)) : null
         };
         openProcessDesigner();
         return;
