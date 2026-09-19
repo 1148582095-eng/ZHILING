@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix 指令流转V1.0",
+  "description": "指令流转系统原型，包含PC端、H5端及MT管理端（机构管理、机构使用统计、通用模板管理、业务配置）",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
