@@ -1047,6 +1047,373 @@
       margin-right: 4px;
       font-family: SimSun, sans-serif;
     }
+
+    /* Flow direction segmented control (新增模板 弹窗) */
+    .mt-flow-direction-group {
+      display: inline-flex;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .mt-flow-dir-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 18px;
+      font-size: 14px;
+      color: #595959;
+      background: #fff;
+      border: none;
+      border-right: 1px solid #d9d9d9;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .mt-flow-dir-btn:last-child {
+      border-right: none;
+    }
+    .mt-flow-dir-btn:hover {
+      color: #1677ff;
+    }
+    .mt-flow-dir-btn.active {
+      background: #1677ff;
+      color: #fff;
+    }
+
+    /* ============ Process Designer (流程设计) Fullscreen ============ */
+    #processDesignerRoot {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      background: #f0f2f5;
+      display: none;
+      flex-direction: column;
+    }
+    #processDesignerRoot.show {
+      display: flex;
+    }
+    .pd-topbar {
+      height: 56px;
+      min-height: 56px;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .pd-topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .pd-back-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pd-back-btn:hover {
+      background: #f1f5f9;
+      color: #1677ff;
+    }
+    .pd-title-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pd-title-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .pd-title-tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+    .pd-title-tag.down {
+      background: #e6f4ff;
+      color: #1677ff;
+    }
+    .pd-title-tag.up {
+      background: #fff3e0;
+      color: #fa8c16;
+    }
+    .pd-topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pd-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .pd-canvas-wrap {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      padding: 48px 24px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px) 0 0 / 24px 24px;
+    }
+    .pd-canvas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 320px;
+    }
+    .pd-node {
+      width: 100%;
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .pd-node:hover {
+      border-color: #91caff;
+    }
+    .pd-node.selected {
+      border-color: #1677ff;
+      box-shadow: 0 0 0 3px rgba(22,119,255,0.12);
+    }
+    .pd-node-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pd-node-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .pd-node-type {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .pd-node-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pd-node-del {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      color: #94a3b8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .pd-node:hover .pd-node-del {
+      opacity: 1;
+    }
+    .pd-node-del:hover {
+      color: #ff4d4f;
+      border-color: #ffccc7;
+    }
+    .pd-connector {
+      position: relative;
+      width: 100%;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pd-connector-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: #d9dee6;
+      transform: translateX(-50%);
+    }
+    .pd-add-btn {
+      position: relative;
+      z-index: 1;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid #1677ff;
+      background: #fff;
+      color: #1677ff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pd-add-btn:hover {
+      background: #1677ff;
+      color: #fff;
+    }
+    .pd-insert-menu {
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      padding: 6px;
+      display: none;
+      flex-direction: column;
+      min-width: 140px;
+      z-index: 5;
+    }
+    .pd-insert-menu.show {
+      display: flex;
+    }
+    .pd-insert-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      font-size: 13px;
+      color: #334155;
+      border-radius: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .pd-insert-item:hover {
+      background: #f0f7ff;
+      color: #1677ff;
+    }
+    .pd-side-panel {
+      width: 300px;
+      min-width: 300px;
+      background: #fff;
+      border-left: 1px solid #e8e8e8;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .pd-side-empty {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #94a3b8;
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .pd-side-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .pd-side-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pd-field-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .pd-field-label {
+      font-size: 12px;
+      color: #64748b;
+    }
+    .pd-field-input {
+      height: 34px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      padding: 0 10px;
+      font-size: 13px;
+      color: #1e293b;
+      background: #fff;
+      outline: none;
+      font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .pd-field-input:focus {
+      border-color: #1677ff;
+    }
+    .pd-field-input:disabled {
+      background: #f5f5f5;
+      color: #8c8c8c;
+      cursor: not-allowed;
+    }
+    .pd-preview-path {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid #eef2f7;
+    }
+    .pd-preview-step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pd-preview-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .pd-preview-name {
+      font-size: 13px;
+      color: #334155;
+      font-weight: 500;
+    }
+    .pd-preview-arrow {
+      color: #cbd5e1;
+      margin: 0 2px;
+    }
     .mt-modal-control {
       flex: 1;
       display: flex;
@@ -2332,7 +2699,7 @@
         </button>
         <button class="nav-item" data-tab="templates" onclick="switchTab('templates')">
           <i data-lucide="file-text"></i>
-          <span>通用模板管理</span>
+          <span>模板管理</span>
         </button>
         <button class="nav-item" data-tab="config" onclick="switchTab('config')">
           <i data-lucide="settings"></i>
@@ -2439,7 +2806,7 @@
           filters: { name: '', category: '', code: '' },
           list: [
             { id: 'c1', code: '-', group: '教育厅', name: '213', alias: '没关系我会弯腰', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=213', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true },
-            { id: 'c2', code: '-', group: '教育厅', name: 'zr', alias: '-', avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=zr&backgroundColor=e2e8f0', category: '舆情处置 | 错误表��', categories: ['舆情处置', '错误表述'], enabled: true },
+            { id: 'c2', code: '-', group: '教育厅', name: 'zr', alias: '-', avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=zr&backgroundColor=e2e8f0', category: '舆情处置 | 错误表���', categories: ['舆情处置', '错误表述'], enabled: true },
             { id: 'c3', code: '-', group: '教育厅', name: 'yfb', alias: 'Konne', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=yfb', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true },
             { id: 'c4', code: '-', group: '住建厅', name: 'wx', alias: '测试账号', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=wx2', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true },
             { id: 'c5', code: '-', group: '住建厅', name: '郭总', alias: '-', avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=guozong&backgroundColor=e2e8f0', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true }
@@ -2649,7 +3016,7 @@
           ],
           receiptFields: [
             { id: 'r1', type: '多行文本', title: '处理说明', required: '必填', placeholder: '请填写处理说明', defaultVal: '' },
-            { id: 'r2', type: '图片上传', title: '图片', required: '非必填', placeholder: '只支持格式JPG、GIF、PNG，且大小���超过10M。', defaultVal: '' },
+            { id: 'r2', type: '图片上传', title: '图片', required: '非必填', placeholder: '只支持格式JPG、GIF、PNG，且大������超过10M。', defaultVal: '' },
             { id: 'r3', type: '文件上传', title: '文件', required: '非必填', placeholder: '支持DOC、DOCX、XLS、XISX、PPT等，且文件大小不超过10M', defaultVal: '' }
           ]
         },
@@ -2667,7 +3034,7 @@
           ],
           receiptFields: [
             { id: 'r1', type: '多行文本', title: '处理说明', required: '必填', placeholder: '请填写处理说明', defaultVal: '' },
-            { id: 'r2', type: '图片上传', title: '图片', required: '非必填', placeholder: '只支持格式JPG、GIF、PNG，且大小不超过10M。', defaultVal: '' },
+            { id: 'r2', type: '图片上传', title: '图片', required: '非必填', placeholder: '只支持格式JPG、GIF、PNG，且大小不��过10M。', defaultVal: '' },
             { id: 'r3', type: '文件上传', title: '文件', required: '非必填', placeholder: '支持DOC、DOCX、XLS、XISX、PPT等，且文件大小不超过10M', defaultVal: '' }
           ]
         },
@@ -4075,146 +4442,485 @@
     }
 
     // 1. 新增通用模板 (Screenshot 1 & 2)
+    // 1. 新增模板 -> 流程设计模式：先填流程基础信息，再进入全屏低代码设计器
     function openAddTemplateModal() {
-      currentTplDraft = {
-        name: '',
+      openProcessInfoModal({ scope: 'common', org: '' });
+    }
+
+    /* ====================================================
+       流程设计模式 (新增模板)
+       信息弹窗 -> 全屏低代码流程设计器 -> 发布
+       ==================================================== */
+    let processDraft = null;
+    let selectedNodeId = null;
+
+    function openProcessInfoModal(opts) {
+      processDraft = {
+        id: null,
+        direction: '下发',
         category: '',
-        req: '限时回执',
-        org: '',
-        issueFields: [
-          { id: 'f1', type: '单行文本', title: '', required: '非必填', placeholder: '', defaultVal: '' }
-        ],
-        receiptFields: [
-          { id: 'r1', type: '单行文本', title: '', required: '非必填', placeholder: '', defaultVal: '' }
-        ]
+        name: '',
+        desc: '',
+        scope: opts.scope,
+        org: opts.org || '',
+        nodes: null
       };
 
       openModalCustom(`
-        <div class="mt-modal-inner">
+        <div class="mt-modal-inner" style="max-width: 560px; width: 560px;">
           <div class="mt-modal-header">
             <h3 class="mt-modal-title">新增模板</h3>
             <button class="mt-modal-close" onclick="closeModal()">✕</button>
           </div>
-
           <div class="mt-modal-body">
-            <!-- Row 1: 模板名称 -->
-            <div class="mt-modal-row" style="margin-bottom: 16px;">
-              <label class="mt-modal-label" style="width: 72px; min-width: 72px;"><span class="req">*</span>模板名称</label>
+            ${opts.scope === 'org' ? `
+              <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#1e293b;margin-bottom:18px;">
+                <i data-lucide="landmark" width="18" height="18" style="color:#60a5fa;"></i>
+                <span>${opts.org}</span>
+              </div>
+            ` : ''}
+            <div class="mt-modal-row" style="margin-bottom: 18px;">
+              <label class="mt-modal-label" style="width: 84px; min-width: 84px;"><span class="req">*</span>流程流向</label>
               <div class="mt-modal-control">
+                <div class="mt-flow-direction-group">
+                  <button type="button" class="mt-flow-dir-btn active" id="flowDirBtn_down" onclick="setProcessDirection('下发')">
+                    <i data-lucide="arrow-down-to-line" width="14" height="14"></i>
+                    <span>下发</span>
+                  </button>
+                  <button type="button" class="mt-flow-dir-btn" id="flowDirBtn_up" onclick="setProcessDirection('上报')">
+                    <i data-lucide="arrow-up-from-line" width="14" height="14"></i>
+                    <span>上报</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="mt-modal-row" style="margin-bottom: 18px;">
+              <label class="mt-modal-label" style="width: 84px; min-width: 84px;"><span class="req">*</span>业务类别</label>
+              <div class="mt-modal-control" style="flex:1;">
+                <select class="mt-input-text" id="processCatSelect" onchange="processDraft.category=this.value" style="width:100%;">
+                  <option value="">请选择业务类别</option>
+                  <option value="舆情处置">舆情处置</option>
+                  <option value="错误表述">错误表述</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-modal-row" style="margin-bottom: 18px;">
+              <label class="mt-modal-label" style="width: 84px; min-width: 84px;"><span class="req">*</span>流程名称</label>
+              <div class="mt-modal-control" style="flex:1;">
                 <div class="mt-input-with-count">
-                  <input type="text" id="tplNameInput" placeholder="请输入模板名称" maxlength="50" oninput="currentTplDraft.name=this.value; document.getElementById('tplNameCount').innerText=this.value.length+' / 50'">
-                  <span id="tplNameCount" class="mt-input-count">0 / 50</span>
+                  <input type="text" id="processNameInput" placeholder="请输入流程名称" maxlength="50" oninput="processDraft.name=this.value; document.getElementById('processNameCount').innerText=this.value.length+' / 50'">
+                  <span id="processNameCount" class="mt-input-count">0 / 50</span>
                 </div>
               </div>
             </div>
-
-            <!-- Row 2: 指令类别 & 指令要求 & 所属机构 -->
-            <div class="mt-modal-two-cols" style="margin-bottom: 20px; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
-              <div class="mt-col-item">
-                <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;"><span class="req">*</span>指令类别</span>
-                <div style="flex:1;">
-                  <select class="mt-input-text" id="tplCatSelect" onchange="currentTplDraft.category=this.value">
-                    <option value="">请选择指令类别</option>
-                    <option value="舆情处置">舆情处置</option>
-                    <option value="错误表述">错误表述</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mt-col-item">
-                <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;"><span class="req">*</span>指令要求</span>
-                <div style="flex:1;">
-                  <select class="mt-input-text" id="tplReqSelect" onchange="currentTplDraft.req=this.value">
-                    <option value="限时回执" selected>限时回执</option>
-                    <option value="回执">回执</option>
-                    <option value="仅阅读">仅阅读</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mt-col-item">
-                <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;">所属机构</span>
-                <div style="flex:1;">
-                  <select class="mt-input-text" id="tplOrgSelect" onchange="currentTplDraft.org=this.value">
-                    <option value="">通用模板（全部机构）</option>
-                    ${state.orgs.map(o => `<option value="${o.name}">${o.name}</option>`).join('')}
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Row 3: 模板内容 -->
-            <div style="margin-top: 10px;">
-              <div style="font-size: 14px; color: #334155; margin-bottom: 8px; font-weight: 500;">
-                <span class="req" style="color:#ff4d4f;margin-right:4px;">*</span>模板内容
-              </div>
-
-              <!-- 指令下发内容 -->
-              <div class="mt-tpl-content-block" style="margin-top: 6px;">
-                <div class="mt-tpl-section-header">
-                  <span>指令下发内容</span>
-                  <button type="button" class="mt-tpl-add-btn" onclick="addTplField('issue')">
-                    <i data-lucide="plus" width="14" height="14"></i>
-                    <span>添加</span>
-                  </button>
-                </div>
-                <div class="mt-tpl-table-head">
-                  <div></div>
-                  <div>控件</div>
-                  <div>标题</div>
-                  <div>是否必填</div>
-                  <div>提示信息</div>
-                  <div>默认值</div>
-                  <div style="text-align: center;">操作</div>
-                </div>
-                <div id="tplContainer_issue">
-                  ${renderTplFieldsTable('issue')}
-                </div>
-              </div>
-
-              <!-- 指令回执内容 -->
-              <div class="mt-tpl-content-block" style="margin-top: 14px;">
-                <div class="mt-tpl-section-header">
-                  <span>指令回执内容</span>
-                  <button type="button" class="mt-tpl-add-btn" onclick="addTplField('receipt')">
-                    <i data-lucide="plus" width="14" height="14"></i>
-                    <span>添加</span>
-                  </button>
-                </div>
-                <div class="mt-tpl-table-head">
-                  <div></div>
-                  <div>控件</div>
-                  <div>标题</div>
-                  <div>是否必填</div>
-                  <div>提示信息</div>
-                  <div>默认值</div>
-                  <div style="text-align: center;">操作</div>
-                </div>
-                <div id="tplContainer_receipt">
-                  ${renderTplFieldsTable('receipt')}
-                </div>
+            <div class="mt-modal-row" style="margin-bottom: 4px; align-items: flex-start;">
+              <label class="mt-modal-label" style="width: 84px; min-width: 84px; margin-top: 8px;">流程说明</label>
+              <div class="mt-modal-control" style="flex:1; position: relative;">
+                <textarea id="processDescInput" placeholder="请输入流程说明" maxlength="200" rows="4" style="width:100%; box-sizing:border-box; resize:none; border:1px solid #d9d9d9; border-radius:4px; padding:8px 10px 20px; font-size:14px; font-family:inherit; outline:none; color:#1e293b;" oninput="processDraft.desc=this.value; document.getElementById('processDescCount').innerText=this.value.length+' / 200'"></textarea>
+                <span id="processDescCount" class="mt-input-count" style="position:absolute; right:10px; bottom:6px;">0 / 200</span>
               </div>
             </div>
           </div>
-
-          <div class="mt-modal-footer" style="justify-content: space-between; margin-top: 24px;">
-            <div>
-              <button type="button" class="mt-preview-link-btn" onclick="previewCurrentTemplate()">
-                <i data-lucide="eye" width="16" height="16"></i>
-                <span>预览</span>
-              </button>
-            </div>
-            <div style="display: flex; gap: 12px;">
-              <button class="mt-btn-cancel" onclick="closeModal()">取消</button>
-              <button class="mt-btn-confirm" onclick="submitTemplateModal(false)">确定</button>
-            </div>
+          <div class="mt-modal-footer">
+            <button class="mt-btn-cancel" onclick="closeModal()">取消</button>
+            <button class="mt-btn-confirm" onclick="confirmProcessInfo()">确认并进入设计</button>
           </div>
         </div>
-      `, 'wide');
+      `);
+    }
+
+    function setProcessDirection(dir) {
+      processDraft.direction = dir;
+      const downBtn = document.getElementById('flowDirBtn_down');
+      const upBtn = document.getElementById('flowDirBtn_up');
+      if (downBtn) downBtn.classList.toggle('active', dir === '下发');
+      if (upBtn) upBtn.classList.toggle('active', dir === '上报');
+    }
+
+    function confirmProcessInfo() {
+      if (!processDraft.name || !processDraft.name.trim()) {
+        showToast('请输入流程名称');
+        return;
+      }
+      if (!processDraft.category) {
+        showToast('请选择业务类别');
+        return;
+      }
+      closeModal();
+      openProcessDesigner();
+    }
+
+    function genNodeId() {
+      return 'n_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+    }
+
+    function nodeTypeMeta(type) {
+      const map = {
+        start: { icon: 'flag', color: '#2f80ed', label: '开始' },
+        approve: { icon: 'user-check', color: '#1677ff', label: '审批节点' },
+        notify: { icon: 'bell', color: '#fa8c16', label: '通知节点' },
+        summary: { icon: 'layers', color: '#52c41a', label: '汇总节点' },
+        end: { icon: 'flag-off', color: '#8c8c8c', label: '结束' }
+      };
+      return map[type] || map.approve;
+    }
+
+    function defaultProcessNodes(direction) {
+      const startLabel = direction === '上报' ? '发起上报' : '发起下发';
+      const midType1 = direction === '上报' ? 'approve' : 'approve';
+      const midName1 = direction === '上报' ? '审核' : '审批';
+      const midType2 = direction === '上报' ? 'summary' : 'notify';
+      const midName2 = direction === '上报' ? '结果汇总' : '下发通知';
+      return [
+        { id: 'start', type: 'start', name: startLabel, config: { initiator: '机构管理员' } },
+        { id: genNodeId(), type: midType1, name: midName1, config: { handler: '', timeLimit: 24, needReceipt: '是' } },
+        { id: genNodeId(), type: midType2, name: midName2, config: midType2 === 'summary' ? { method: '自动汇总' } : { target: '' } },
+        { id: 'end', type: 'end', name: '流程结束', config: {} }
+      ];
+    }
+
+    function openProcessDesigner() {
+      if (!processDraft.nodes) processDraft.nodes = defaultProcessNodes(processDraft.direction);
+      const midNode = processDraft.nodes.find(n => n.type !== 'start' && n.type !== 'end');
+      selectedNodeId = midNode ? midNode.id : null;
+
+      let root = document.getElementById('processDesignerRoot');
+      if (!root) {
+        root = document.createElement('div');
+        root.id = 'processDesignerRoot';
+        document.body.appendChild(root);
+      }
+      root.innerHTML = renderProcessDesignerHtml();
+      root.classList.add('show');
+      lucide.createIcons();
+    }
+
+    function closeProcessDesigner() {
+      const root = document.getElementById('processDesignerRoot');
+      if (root) {
+        root.classList.remove('show');
+        root.innerHTML = '';
+      }
+      processDraft = null;
+      selectedNodeId = null;
+    }
+
+    function renderProcessDesignerHtml() {
+      const d = processDraft;
+      return `
+        <div class="pd-topbar">
+          <div class="pd-topbar-left">
+            <button class="pd-back-btn" onclick="exitProcessDesigner()" title="返回">
+              <i data-lucide="arrow-left" width="16" height="16"></i>
+            </button>
+            <div class="pd-title-block">
+              <span class="pd-title-name">${d.name || '未命名流程'}</span>
+              <span class="pd-title-tag ${d.direction === '上报' ? 'up' : 'down'}">${d.direction}</span>
+            </div>
+          </div>
+          <div class="pd-topbar-right">
+            <button class="btn btn-default" onclick="previewProcessDesign()">
+              <i data-lucide="eye" width="14" height="14"></i>
+              <span>预览</span>
+            </button>
+            <button class="btn btn-primary" onclick="publishProcessDesign()">
+              <i data-lucide="rocket" width="14" height="14"></i>
+              <span>发布</span>
+            </button>
+          </div>
+        </div>
+        <div class="pd-body" onclick="closeAllInsertMenus()">
+          <div class="pd-canvas-wrap">
+            <div class="pd-canvas">
+              ${renderProcessNodesHtml()}
+            </div>
+          </div>
+          <div class="pd-side-panel">
+            ${renderProcessSidePanel()}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProcessNodesHtml() {
+      const nodes = processDraft.nodes;
+      let html = '';
+      nodes.forEach((node, idx) => {
+        const meta = nodeTypeMeta(node.type);
+        const isFixed = node.type === 'start' || node.type === 'end';
+        const selected = node.id === selectedNodeId;
+        html += `
+          <div class="pd-node ${selected ? 'selected' : ''}" onclick="event.stopPropagation();selectProcessNode('${node.id}')">
+            <div class="pd-node-icon" style="background:${meta.color}22;color:${meta.color};">
+              <i data-lucide="${meta.icon}" width="16" height="16"></i>
+            </div>
+            <div class="pd-node-body">
+              <span class="pd-node-type">${meta.label}</span>
+              <span class="pd-node-name">${node.name}</span>
+            </div>
+            ${!isFixed ? `<button type="button" class="pd-node-del" onclick="event.stopPropagation();deleteProcessNode('${node.id}')" title="删除节点"><i data-lucide="x" width="13" height="13"></i></button>` : ''}
+          </div>
+        `;
+        if (idx < nodes.length - 1) {
+          html += `
+            <div class="pd-connector">
+              <div class="pd-connector-line"></div>
+              <button type="button" class="pd-add-btn" onclick="event.stopPropagation();toggleInsertMenu(event, ${idx})" title="添加节点">
+                <i data-lucide="plus" width="14" height="14"></i>
+              </button>
+              <div class="pd-insert-menu" id="pdInsertMenu_${idx}">
+                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'approve')"><i data-lucide="user-check" width="14" height="14"></i><span>审批节点</span></div>
+                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'notify')"><i data-lucide="bell" width="14" height="14"></i><span>通知节点</span></div>
+                <div class="pd-insert-item" onclick="event.stopPropagation();insertProcessNode(${idx}, 'summary')"><i data-lucide="layers" width="14" height="14"></i><span>汇总节点</span></div>
+              </div>
+            </div>
+          `;
+        }
+      });
+      return html;
+    }
+
+    function toggleInsertMenu(e, idx) {
+      e.stopPropagation();
+      document.querySelectorAll('.pd-insert-menu').forEach(m => {
+        if (m.id !== `pdInsertMenu_${idx}`) m.classList.remove('show');
+      });
+      const menu = document.getElementById(`pdInsertMenu_${idx}`);
+      if (menu) menu.classList.toggle('show');
+    }
+
+    function closeAllInsertMenus() {
+      document.querySelectorAll('.pd-insert-menu').forEach(m => m.classList.remove('show'));
+    }
+
+    function insertProcessNode(afterIdx, type) {
+      const meta = nodeTypeMeta(type);
+      const config = type === 'approve' ? { handler: '', timeLimit: 24, needReceipt: '是' }
+        : type === 'summary' ? { method: '自动汇总' }
+        : { target: '' };
+      const newNode = { id: genNodeId(), type, name: meta.label, config };
+      processDraft.nodes.splice(afterIdx + 1, 0, newNode);
+      selectedNodeId = newNode.id;
+      refreshProcessCanvas();
+    }
+
+    function deleteProcessNode(id) {
+      processDraft.nodes = processDraft.nodes.filter(n => n.id !== id);
+      if (selectedNodeId === id) selectedNodeId = null;
+      refreshProcessCanvas();
+    }
+
+    function selectProcessNode(id) {
+      selectedNodeId = id;
+      refreshProcessCanvas();
+    }
+
+    function refreshProcessCanvas() {
+      const canvas = document.querySelector('.pd-canvas');
+      if (canvas) canvas.innerHTML = renderProcessNodesHtml();
+      const side = document.querySelector('.pd-side-panel');
+      if (side) side.innerHTML = renderProcessSidePanel();
+      lucide.createIcons();
+    }
+
+    function renderProcessSidePanel() {
+      const node = processDraft.nodes.find(n => n.id === selectedNodeId);
+      if (!node) {
+        return `
+          <div class="pd-side-empty">
+            <i data-lucide="mouse-pointer-click" width="28" height="28"></i>
+            <p>点击画布中的节点<br>查看和编辑节点属性</p>
+          </div>
+        `;
+      }
+      const meta = nodeTypeMeta(node.type);
+      const isFixed = node.type === 'start' || node.type === 'end';
+      let fieldsHtml = '';
+      if (node.type === 'start') {
+        fieldsHtml = `
+          <div class="pd-field-row"><span class="pd-field-label">发起人</span><input class="pd-field-input" value="${node.config.initiator || '机构管理员'}" disabled></div>
+          <div class="pd-field-row"><span class="pd-field-label">流程流向</span><input class="pd-field-input" value="${processDraft.direction}" disabled></div>
+        `;
+      } else if (node.type === 'end') {
+        fieldsHtml = `<div class="pd-field-row"><span class="pd-field-label">说明</span><input class="pd-field-input" value="流程结束节点，不可编辑" disabled></div>`;
+      } else if (node.type === 'approve') {
+        fieldsHtml = `
+          <div class="pd-field-row"><span class="pd-field-label">处理人</span><input class="pd-field-input" placeholder="请输入处理人/角色" value="${node.config.handler || ''}" oninput="updateNodeConfig('${node.id}','handler',this.value)"></div>
+          <div class="pd-field-row"><span class="pd-field-label">处理时限（小时）</span><input type="number" class="pd-field-input" value="${node.config.timeLimit || 24}" oninput="updateNodeConfig('${node.id}','timeLimit',this.value)"></div>
+          <div class="pd-field-row"><span class="pd-field-label">是否需回执</span>
+            <select class="pd-field-input" onchange="updateNodeConfig('${node.id}','needReceipt',this.value)">
+              <option value="是" ${node.config.needReceipt === '是' ? 'selected' : ''}>是</option>
+              <option value="否" ${node.config.needReceipt === '否' ? 'selected' : ''}>否</option>
+            </select>
+          </div>
+        `;
+      } else if (node.type === 'notify') {
+        fieldsHtml = `<div class="pd-field-row"><span class="pd-field-label">通知对象</span><input class="pd-field-input" placeholder="请输入通知对象" value="${node.config.target || ''}" oninput="updateNodeConfig('${node.id}','target',this.value)"></div>`;
+      } else if (node.type === 'summary') {
+        fieldsHtml = `
+          <div class="pd-field-row"><span class="pd-field-label">汇总方式</span>
+            <select class="pd-field-input" onchange="updateNodeConfig('${node.id}','method',this.value)">
+              <option value="自动汇总" ${node.config.method === '自动汇总' ? 'selected' : ''}>自动汇总</option>
+              <option value="人工汇总" ${node.config.method === '人工汇总' ? 'selected' : ''}>人工汇总</option>
+            </select>
+          </div>
+        `;
+      }
+      return `
+        <div class="pd-side-header">
+          <span class="pd-side-icon" style="background:${meta.color}22;color:${meta.color};"><i data-lucide="${meta.icon}" width="15" height="15"></i></span>
+          <span>${meta.label}</span>
+        </div>
+        <div class="pd-field-row">
+          <span class="pd-field-label">节点名称</span>
+          <input class="pd-field-input" value="${node.name}" ${isFixed ? 'disabled' : ''} oninput="updateNodeName('${node.id}',this.value)">
+        </div>
+        ${fieldsHtml}
+      `;
+    }
+
+    function updateNodeConfig(id, key, val) {
+      const node = processDraft.nodes.find(n => n.id === id);
+      if (node) node.config[key] = val;
+    }
+
+    function updateNodeName(id, val) {
+      const node = processDraft.nodes.find(n => n.id === id);
+      if (node) node.name = val;
+      const canvas = document.querySelector('.pd-canvas');
+      if (canvas) canvas.innerHTML = renderProcessNodesHtml();
+      lucide.createIcons();
+    }
+
+    function exitProcessDesigner() {
+      openModalCustom(`
+        <div class="mt-modal-inner" style="max-width: 420px; width: 420px; padding: 24px 28px 20px;">
+          <div class="mt-confirm-header" style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+            <span class="mt-confirm-icon" style="background:#fa8c16; color:#fff; width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px;">!</span>
+            <span class="mt-confirm-title" style="font-size:16px; font-weight:700; color:#1e293b;">退出流程设计？</span>
+          </div>
+          <div class="mt-confirm-desc" style="margin-left:32px; font-size:14px; color:#595959;">
+            当前设计内容尚未发布，退出后<span style="color:#ff4d4f;">修改将不会保存</span>。
+          </div>
+          <div class="mt-modal-footer" style="margin-top:24px; justify-content:flex-end; gap:10px;">
+            <button class="mt-btn-cancel" onclick="closeModal()">继续设计</button>
+            <button class="mt-btn-confirm" onclick="closeModal();closeProcessDesigner();">确认退出</button>
+          </div>
+        </div>
+      `, true);
+    }
+
+    function previewProcessDesign() {
+      const nodes = processDraft.nodes;
+      openModalCustom(`
+        <div class="mt-modal-inner" style="max-width: 480px; width: 480px;">
+          <div class="mt-modal-header">
+            <h3 class="mt-modal-title">流程预览</h3>
+            <button class="mt-modal-close" onclick="closeModal()">✕</button>
+          </div>
+          <div class="mt-modal-body">
+            <div style="margin-bottom:16px;">
+              <div style="font-size:15px; font-weight:700; color:#1e293b;">${processDraft.name || '未命名流程'}</div>
+              <div style="font-size:12px; color:#8c8c8c; margin-top:4px;">${processDraft.direction} · ${processDraft.category || '-'}</div>
+              ${processDraft.desc ? `<div style="font-size:13px; color:#595959; margin-top:8px;">${processDraft.desc}</div>` : ''}
+            </div>
+            <div class="pd-preview-path">
+              ${nodes.map((n, i) => {
+                const meta = nodeTypeMeta(n.type);
+                return `
+                  <div class="pd-preview-step">
+                    <span class="pd-preview-dot" style="background:${meta.color}"></span>
+                    <span class="pd-preview-name">${n.name}</span>
+                  </div>
+                  ${i < nodes.length - 1 ? '<span class="pd-preview-arrow">→</span>' : ''}
+                `;
+              }).join('')}
+            </div>
+          </div>
+          <div class="mt-modal-footer">
+            <button class="mt-btn-confirm" onclick="closeModal()">关闭</button>
+          </div>
+        </div>
+      `);
+    }
+
+    function publishProcessDesign() {
+      if (!processDraft.nodes || processDraft.nodes.length < 2) {
+        showToast('流程节点配置不完整');
+        return;
+      }
+      const now = new Date();
+      const createTime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+      const randomHex = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 8);
+      if (!processDraft.id) processDraft.id = 'TP' + randomHex;
+
+      if (processDraft.scope === 'org') {
+        const catKeyOrg = processDraft.category === '错误表述' ? 'cwbs' : 'yqcz';
+        const record = {
+          id: processDraft.id,
+          req: processDraft.direction === '下发' ? '限时回执' : '回执',
+          type: '机构模板',
+          name: processDraft.name,
+          createTime: createTime,
+          visible: true,
+          category: catKeyOrg,
+          org: processDraft.org,
+          direction: processDraft.direction,
+          desc: processDraft.desc,
+          status: '已发布',
+          nodes: JSON.parse(JSON.stringify(processDraft.nodes))
+        };
+        const existingIdx = state.orgDetail.templates.list.findIndex(t => t.id === processDraft.id);
+        if (existingIdx >= 0) {
+          state.orgDetail.templates.list[existingIdx] = record;
+        } else {
+          state.orgDetail.templates.list.unshift(record);
+        }
+      } else {
+        const record = {
+          id: processDraft.id,
+          category: processDraft.category,
+          req: processDraft.direction === '下发' ? '限时回执' : '回执',
+          name: processDraft.name,
+          org: '',
+          createTime: createTime,
+          direction: processDraft.direction,
+          desc: processDraft.desc,
+          status: '已发布',
+          nodes: JSON.parse(JSON.stringify(processDraft.nodes))
+        };
+        const existingIdx = state.templates.findIndex(t => t.id === processDraft.id);
+        if (existingIdx >= 0) {
+          state.templates[existingIdx] = record;
+        } else {
+          state.templates.unshift(record);
+        }
+      }
+
+      closeProcessDesigner();
+      showToast('流程发布成功');
+      render();
     }
 
     // 2. 编辑通用模板 (Screenshot 3)
     function openEditTemplateModal(id) {
       const t = state.templates.find(x => x.id === id);
       if (!t) return;
+
+      if (t.nodes) {
+        processDraft = {
+          id: t.id,
+          direction: t.direction || '下发',
+          category: t.category || '舆情处置',
+          name: t.name,
+          desc: t.desc || '',
+          scope: 'common',
+          org: '',
+          nodes: JSON.parse(JSON.stringify(t.nodes))
+        };
+        openProcessDesigner();
+        return;
+      }
 
       currentTplDraft = JSON.parse(JSON.stringify(t));
       if (!currentTplDraft.issueFields) currentTplDraft.issueFields = [];
@@ -4746,7 +5452,7 @@
       state.bizConfig.currentApp = appId;
       closeModal();
       render();
-      showToast('模块新增成功');
+      showToast('模块新增��功');
     }
 
     function openEditModuleModal(catId, appId, name, id) {
@@ -6653,7 +7359,7 @@
       const isCwbs = document.getElementById('editInactiveCatCwbs')?.checked;
 
       if (!isYqcz && !isCwbs) {
-        showToast('请至少选择一个指令类别');
+        showToast('请���少选择一个指令类别');
         return;
       }
 
@@ -6991,161 +7697,31 @@
     }
 
     /* 1. 机构详情-机构模板：新增模板 (截图 1) */
+    // 机构模板：新增模板 -> 流程设计模式（与通用模板管理共用同一套流程设计器）
     function openAddOrgTemplateModal() {
       const orgName = (state.orgDetail && state.orgDetail.activeOrgName) || '台湾省网信办';
-      const cat = state.orgDetail.templates.category === 'cwbs' ? '错误表述' : '舆情处置';
-
-      currentTplDraft = {
-        org: orgName,
-        name: '',
-        category: cat,
-        req: '限时回执',
-        approver: '',
-        issueFields: [
-          { id: 'f1', type: '单行文本', title: '', required: '非必填', placeholder: '', defaultVal: '' }
-        ],
-        receiptFields: [
-          { id: 'r1', type: '单行文本', title: '', required: '非必填', placeholder: '', defaultVal: '' }
-        ]
-      };
-
-      openModalCustom(`
-        <div class="mt-modal-inner" style="max-height: 88vh; display: flex; flex-direction: column;">
-          <div class="mt-modal-header" style="margin-bottom: 12px;">
-            <h3 class="mt-modal-title">新增模板</h3>
-            <button class="mt-modal-close" onclick="closeModal()">✕</button>
-          </div>
-
-          <div class="mt-modal-body" style="overflow-y: auto; padding-right: 4px;">
-            <!-- 顶部机构标识 (1:1 截图 1) -->
-            <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 18px;">
-              <i data-lucide="landmark" width="18" height="18" style="color: #60a5fa;"></i>
-              <span>${orgName}</span>
-            </div>
-
-            <!-- 模板名称 (1:1 截图 1) -->
-            <div class="mt-modal-row" style="margin-bottom: 16px;">
-              <label class="mt-modal-label" style="width: 72px; min-width: 72px;"><span class="req">*</span>模板名称</label>
-              <div class="mt-modal-control">
-                <div class="mt-input-with-count">
-                  <input type="text" id="orgTplNameInput" placeholder="请输入模板名称" maxlength="50" oninput="currentTplDraft.name=this.value; document.getElementById('orgTplNameCount').innerText=this.value.length+' / 50'">
-                  <span id="orgTplNameCount" class="mt-input-count">0 / 50</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 指令类别 & 指令要求 两列 (1:1 截图 1) -->
-            <div class="mt-modal-two-cols" style="margin-bottom: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-              <div class="mt-col-item" style="display: flex; align-items: center; gap: 12px;">
-                <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;"><span class="req">*</span>指令类别</span>
-                <div style="flex: 1;">
-                  <select class="mt-input-text" id="orgTplCatSelect" onchange="currentTplDraft.category=this.value">
-                    <option value="">请选择指令类别</option>
-                    <option value="舆情处置" ${currentTplDraft.category === '舆情处置' ? 'selected' : ''}>舆情处置</option>
-                    <option value="错误表述" ${currentTplDraft.category === '错误表述' ? 'selected' : ''}>错误表述</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mt-col-item" style="display: flex; align-items: center; gap: 12px;">
-                <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;"><span class="req">*</span>指令要求</span>
-                <div style="flex: 1;">
-                  <select class="mt-input-text" id="orgTplReqSelect" onchange="currentTplDraft.req=this.value">
-                    <option value="限时回执" ${currentTplDraft.req === '限时回执' ? 'selected' : ''}>限时回执</option>
-                    <option value="回执" ${currentTplDraft.req === '回执' ? 'selected' : ''}>回执</option>
-                    <option value="仅阅读" ${currentTplDraft.req === '仅阅读' ? 'selected' : ''}>仅阅读</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- 审批人 (增加审批人选择，1:1 截图 1) -->
-            <div class="mt-modal-row" style="margin-bottom: 20px;">
-              <label class="mt-modal-label" style="width: 72px; min-width: 72px;">审批人</label>
-              <div class="mt-modal-control">
-                <div style="display: flex; align-items: center; border: 1px solid #d9d9d9; border-radius: 4px; padding: 0 12px; height: 36px; background: #fff;">
-                  <input type="text" id="orgTplApproverInput" readonly placeholder="请选择审批人" value="${currentTplDraft.approver || ''}" style="flex: 1; border: none; outline: none; background: transparent; font-size: 14px; color: #1e293b; cursor: pointer;" onclick="openSelectApproverModal()">
-                  <a class="org-link" style="font-weight: 500; font-size: 14px; cursor: pointer; white-space: nowrap;" onclick="openSelectApproverModal()">选择</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- 模板内容 -->
-            <div style="margin-top: 10px;">
-              <div style="font-size: 14px; color: #334155; margin-bottom: 8px; font-weight: 500;">
-                <span class="req" style="color:#ff4d4f;margin-right:4px;">*</span>模板内容
-              </div>
-
-              <!-- 指令下发内容 -->
-              <div class="mt-tpl-content-block" style="margin-top: 6px;">
-                <div class="mt-tpl-section-header">
-                  <span>指令下发内容</span>
-                  <button type="button" class="mt-tpl-add-btn" onclick="addTplField('issue')">
-                    <i data-lucide="plus" width="14" height="14"></i>
-                    <span>添加</span>
-                  </button>
-                </div>
-                <div class="mt-tpl-table-head">
-                  <div></div>
-                  <div>控件</div>
-                  <div>标题</div>
-                  <div>是否必填</div>
-                  <div>提示信息</div>
-                  <div>默认值</div>
-                  <div style="text-align: center;">操作</div>
-                </div>
-                <div id="tplContainer_issue">
-                  ${renderTplFieldsTable('issue')}
-                </div>
-              </div>
-
-              <!-- 指令回执内容 -->
-              <div class="mt-tpl-content-block" style="margin-top: 14px;">
-                <div class="mt-tpl-section-header">
-                  <span>指令回执内容</span>
-                  <button type="button" class="mt-tpl-add-btn" onclick="addTplField('receipt')">
-                    <i data-lucide="plus" width="14" height="14"></i>
-                    <span>添加</span>
-                  </button>
-                </div>
-                <div class="mt-tpl-table-head">
-                  <div></div>
-                  <div>控件</div>
-                  <div>标题</div>
-                  <div>是否必填</div>
-                  <div>提示信息</div>
-                  <div>默认值</div>
-                  <div style="text-align: center;">操作</div>
-                </div>
-                <div id="tplContainer_receipt">
-                  ${renderTplFieldsTable('receipt')}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-modal-footer" style="justify-content: space-between; margin-top: 24px;">
-            <div>
-              <button type="button" class="mt-preview-link-btn" onclick="previewCurrentTemplate()">
-                <i data-lucide="eye" width="16" height="16"></i>
-                <span>预览</span>
-              </button>
-            </div>
-            <div style="display: flex; gap: 12px;">
-              <button class="mt-btn-cancel" onclick="closeModal()">取消</button>
-              <button class="mt-btn-confirm" onclick="submitOrgTemplateModal(false)">确定</button>
-            </div>
-          </div>
-        </div>
-      `, 'wide');
-      if (window.lucide) {
-        lucide.createIcons();
-      }
+      openProcessInfoModal({ scope: 'org', org: orgName });
     }
 
-    /* 4. 机构详情-机构模板：编辑模板 (弹窗内容同新增) */
+    /* 4. 机构详情-机构模板：编辑模板（流程类模板直接进入设计器，历史字段类模板沿用旧表单） */
     function openEditOrgTemplateModal(tplId) {
       const tpl = state.orgDetail.templates.list.find(t => t.id === tplId);
       if (!tpl) return;
+
+      if (tpl.nodes) {
+        processDraft = {
+          id: tpl.id,
+          direction: tpl.direction || '下发',
+          category: tpl.category === 'cwbs' ? '错误表述' : '舆情处置',
+          name: tpl.name,
+          desc: tpl.desc || '',
+          scope: 'org',
+          org: tpl.org,
+          nodes: JSON.parse(JSON.stringify(tpl.nodes))
+        };
+        openProcessDesigner();
+        return;
+      }
 
       const orgName = tpl.org || (state.orgDetail && state.orgDetail.activeOrgName) || '台湾省网信办';
 
@@ -7194,7 +7770,7 @@
                   <select class="mt-input-text" id="orgTplCatSelect" onchange="currentTplDraft.category=this.value">
                     <option value="">请选择指令类别</option>
                     <option value="舆情处置" ${currentTplDraft.category === '舆情处置' ? 'selected' : ''}>舆情处置</option>
-                    <option value="错误表述" ${currentTplDraft.category === '错误表述' ? 'selected' : ''}>错误表述</option>
+                    <option value="错误表述" ${currentTplDraft.category === '错误表���' ? 'selected' : ''}>错误表述</option>
                   </select>
                 </div>
               </div>
@@ -7240,7 +7816,7 @@
                   <div></div>
                   <div>控件</div>
                   <div>标题</div>
-                  <div>是否必填</div>
+                  <div>���否必填</div>
                   <div>提示信息</div>
                   <div>默认值</div>
                   <div style="text-align: center;">操作</div>
