@@ -2606,7 +2606,7 @@ var draftRows=[
   {
     key:"draft-2",
     id:"CG-20260912-002",
-    title:"关于排查重点自媒体违规炒作虚假涉汛信息的专项通知（草稿）",
+    title:"关于排查重点自媒体违规炒作虚假涉汛信息的��项通知（草稿）",
     template:"舆情处置-回执",
     time:"2026-09-12 16:45:10",
     receiver:"各区县网信办",
@@ -3032,7 +3032,7 @@ var taskRows=[
     deadline:"2026-09-16 12:00:00",
     handleCountdown:"06小时20分",
     source:"网络仿冒巡检平台",
-    description:"监测发现境外服务器解析出仿冒省网信办域名的钓鱼站点，请立即协调域名注册商与DNS解析机构进行域名关停与解析污染清洗。",
+    description:"监测发现境外服务器解析出仿冒省网���办域名的钓鱼站点，请立即协调域名注册商与DNS解析机构进行域名关停与解析污染清洗。",
     files:["仿冒域名WHOIS信息.txt"]
   },
   {
@@ -3657,7 +3657,7 @@ function renderCurrentHandlerCell(row){
     }).join("");
 
     var popoverHtml = '<div class="handler-popover">' +
-      '<div class="handler-pop-title"><span>待受理人员名单</span><b>共 ' + total + ' 人</b></div>' +
+      '<div class="handler-pop-title"><span>待受��人员名单</span><b>共 ' + total + ' 人</b></div>' +
       '<div class="handler-pop-tags">' + tagsHtml + '</div>' +
       '<div class="handler-pop-note">注：限时多人协同指令，任一责任人受理响应后即进入办理阶段。</div>' +
     '</div>';
@@ -4391,7 +4391,7 @@ function sideTree(external){
   return '<aside class="card side-card"><div class="side-title"><span>'+ico("building-2",18)+'<span>'+(external?"联系人分组":"机构分组")+'</span></span><span class="link" '+(external?'data-action="group-add"':'')+'>'+ico("circle-plus",17)+'</span></div><div class="tree-root"><span class="tree-root-arrow">⌄</span><span>'+(external?"全部(5)":"台湾省网信办(91)")+'</span></div>'+groups.map(function(g,i){return '<div class="tree-item"><span>'+g+'</span>'+(external?(i<6?'<span class="tree-actions"><span data-action="group-add">'+ico("pencil",13)+'</span><span data-action="group-delete">'+ico("trash-2",13)+'</span></span>':""):'<span class="tree-actions"><span>'+ico("pencil",13)+'</span></span>')+'</div>'}).join("")+'</aside>'
 }
 function renderUsers(external){
-  var action=external?'<div class="head-actions"><button class="btn" data-action="batch">'+ico("pencil",14)+'批量调整分组</button><button class="btn primary" data-action="invite">'+ico("user-plus",14)+'邀请联系人</button></div>':'<div class="head-actions"><button class="btn">'+ico("pencil",14)+'批量调整分组</button></div>';
+  var action=external?'<div class="head-actions"><button class="btn" data-action="batch">'+ico("pencil",14)+'批量调整分组</button><button class="btn primary" data-action="invite">'+ico("user-plus",14)+'邀请���系人</button></div>':'<div class="head-actions"><button class="btn">'+ico("pencil",14)+'批量调整分组</button></div>';
   var title=external?"外部联系人":"机构用户",desc=external?"维护外部协作人员，灵活分组统一管理":"维护机构用户的指令流转权限";
   return '<div class="page">'+pageHead(title,desc,action)+'<div class="split">'+sideTree(external)+'<section class="card"><div class="filters task-filters management-filters" style="padding-top:18px"><div class="filter-row"><div class="filter-content"><b>'+(external?"联系人":"用户")+'</b><input data-filter-content placeholder="'+(external?"请输入联系人姓名":"请输入姓名搜索")+'"></div>'+filterSelect("user-category","指令类别",["舆情处置","错误表述"] )+'<div style="flex:1"></div><button class="btn primary">'+ico("search",15)+'查询</button><button class="btn" data-filter-reset>'+ico("rotate-ccw",15)+'重置</button></div></div><div class="table-wrap"><table class="table"><thead><tr><th>'+(external?'<span class="row-check"></span>　':"")+'分组</th><th>用户信息</th><th>指令类别</th><th>'+(external?"启用/停用":"数据权限")+'</th><th>操作</th></tr></thead><tbody>'+userRows(external)+'</tbody></table>'+pagination(external?5:91,external?50:10)+'</div></section></div>'+footer()+'</div>'
 }
@@ -4620,11 +4620,9 @@ function renderSettings(){
   }
 
   var topAction = '<div class="head-actions">' +
-    (activeMenu === "templates" ?
-      '<button class="btn primary" data-action="open-create-template-wizard" style="font-weight:700">' + ico("plus", 15) + '<span>新建指令模板</span></button>' :
-     activeMenu === "dict" ?
-      '<button class="btn primary" data-action="open-add-setting-modal" data-type="' + (state.settingsTab || "transfer") + '">' + ico("plus", 15) + '<span>新增字典分类</span></button>' :
-      '<button class="btn primary" data-action="save-role-permissions">' + ico("check", 15) + '<span>保存权限配置</span></button>'
+    (activeMenu === "roles" ?
+      '<button class="btn primary" data-action="save-role-permissions">' + ico("check", 15) + '<span>保存权限配置</span></button>' :
+      ''
     ) +
   '</div>';
 
@@ -4702,9 +4700,6 @@ function renderOrgTemplatesPane(){
         ico("search", 14) +
         '<input type="text" placeholder="搜索模板名称 / 编码..." value="' + escapeHtml(state.tplSearchKw || "") + '" data-action="settings-tpl-search-input">' +
       '</div>' +
-      '<button type="button" class="btn primary" data-action="open-create-template-wizard" style="font-weight:700;height:36px;padding:0 16px">' +
-        ico("plus", 15) + ' 新建模板' +
-      '</button>' +
     '</div>' +
   '</div>';
 
@@ -4712,7 +4707,7 @@ function renderOrgTemplatesPane(){
   if(!filteredTemplates.length){
     tableRowsHtml = '<tr><td colspan="9" style="padding:50px 0;text-align:center;color:#94a3b8">' +
       ico("file-x", 36) +
-      '<p style="margin-top:8px">未检索到符合条件的模板，点击右上角【+ 新建模板】开始创建</p>' +
+      '<p style="margin-top:8px">未检索到符合条件的模板</p>' +
     '</td></tr>';
   } else {
     tableRowsHtml = filteredTemplates.map(function(t, idx){
@@ -4745,9 +4740,7 @@ function renderOrgTemplatesPane(){
         '</td>' +
         '<td>' +
           '<div style="display:flex;gap:6px;align-items:center">' +
-            '<button type="button" class="btn light small" data-action="edit-tpl-wizard" data-tpl-id="' + t.id + '" style="font-size:12px;padding:0 8px;font-weight:700;color:#005c58">' + ico("layout", 12) + ' 设计表单</button>' +
-            '<button type="button" class="btn light small" data-action="copy-tpl-item" data-tpl-id="' + t.id + '" style="font-size:12px;padding:0 8px" title="复制模板">' + ico("copy", 12) + '</button>' +
-            '<button type="button" class="btn small" data-action="delete-tpl-item" data-tpl-id="' + t.id + '" style="font-size:12px;padding:0 8px;color:#ef4444;border-color:#fecaca" title="删除模板">' + ico("trash-2", 12) + '</button>' +
+            '<button type="button" class="btn light small" data-action="preview-tpl-item" data-tpl-id="' + t.id + '" style="font-size:12px;padding:0 8px;font-weight:700;color:#005c58">' + ico("eye", 12) + ' 预览</button>' +
           '</div>' +
         '</td>' +
       '</tr>';
@@ -5285,6 +5278,96 @@ function renderTplWizardModal(){
   }
 
   return '<div></div>';
+}
+
+/* === 3.5 模板只读预览弹窗（表单样式 + 全流程流转路径） === */
+function renderTplPreviewFullModal(){
+  var b = tplWizardState.basic;
+  var tplName = b.name || "指令模板";
+
+  var fieldsHtml = tplWizardState.formFields.map(function(f, idx){
+    var previewControl = "";
+    if(f.type === "text"){
+      previewControl = '<input class="input" placeholder="' + escapeHtml(f.placeholder || "请输入单行文本") + '" value="' + escapeHtml(f.defaultValue || "") + '" disabled style="background:#f8fafc;cursor:not-allowed">';
+    } else if(f.type === "textarea"){
+      previewControl = '<textarea class="textarea" placeholder="' + escapeHtml(f.placeholder || "请输入多行文本") + '" disabled style="background:#f8fafc;cursor:not-allowed;height:60px;resize:none">' + escapeHtml(f.defaultValue || "") + '</textarea>';
+    } else if(f.type === "date"){
+      previewControl = '<input class="input" type="text" placeholder="' + escapeHtml(f.placeholder || "年/月/日") + '" value="' + escapeHtml(f.defaultValue || "") + '" disabled style="background:#f8fafc;cursor:not-allowed">';
+    } else if(f.type === "select"){
+      var opts = f.options || ["选项一", "选项二", "选项三"];
+      previewControl = '<select class="select" disabled style="background:#f8fafc;cursor:not-allowed">' +
+        opts.map(function(o){ return '<option>' + escapeHtml(o) + '</option>'; }).join("") +
+      '</select>';
+    } else if(f.type === "file"){
+      previewControl = '<div class="upload" style="padding:14px;height:60px;cursor:not-allowed;opacity:.7"><div style="font-size:12px;color:#64748b">' + ico("upload-cloud", 18) + ' 点击或拖拽上传材料附件</div></div>';
+    } else if(f.type === "number"){
+      previewControl = '<div style="display:flex;align-items:center;gap:6px">' +
+        '<input class="input" type="number" placeholder="' + escapeHtml(f.placeholder || "0") + '" value="' + escapeHtml(f.defaultValue || "") + '" disabled style="background:#f8fafc;cursor:not-allowed;flex:1">' +
+        (f.unit ? '<span style="font-size:12px;font-weight:700;color:#64748b">' + escapeHtml(f.unit) + '</span>' : '') +
+      '</div>';
+    }
+
+    return '<div class="canvas-field-card" style="cursor:default">' +
+      '<div class="canvas-field-head">' +
+        '<div class="canvas-field-label ' + (f.required ? 'req' : '') + '">' +
+          '<span>' + (idx + 1) + '. ' + escapeHtml(f.name || "未命名字段") + '</span>' +
+          '<span style="font-size:11px;color:#64748b;font-weight:400;background:#f1f5f9;padding:1px 6px;border-radius:4px">' + f.type + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<div style="pointer-events:none">' + previewControl + '</div>' +
+      (f.desc ? '<div style="font-size:11px;color:#94a3b8;margin-top:4px">' + escapeHtml(f.desc) + '</div>' : '') +
+    '</div>';
+  }).join("");
+
+  var nodes = tplWizardState.flowNodes;
+  var flowHtml = '<div class="flow-designer-canvas">' +
+    nodes.map(function(n, idx){
+      return '<div class="flow-node-box ' + (idx === 2 ? 'highlight' : '') + '">' +
+        '<div class="flow-node-header">' +
+          '<div class="flow-node-title">' +
+            '<span style="width:24px;height:24px;border-radius:50%;background:#005c58;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px">' + (idx + 1) + '</span>' +
+            '<span>' + escapeHtml(n.title) + '</span>' +
+          '</div>' +
+          '<span class="tag" style="background:#e0f2fe;color:#0369a1">' + escapeHtml(n.role) + '</span>' +
+        '</div>' +
+        '<div style="font-size:12.5px;color:#64748b;line-height:1.5">' + escapeHtml(n.desc) + '</div>' +
+      '</div>' +
+      (idx < nodes.length - 1 ? '<div class="flow-arrow-down">↓</div>' : '');
+    }).join("") +
+  '</div>';
+
+  return '<div class="modal" style="width:900px;max-width:94vw;max-height:90vh;display:flex;flex-direction:column">' +
+    '<div class="modal-head">' +
+      '<div style="display:flex;align-items:center;gap:10px">' +
+        '<span style="width:32px;height:32px;border-radius:8px;background:#005c58;color:#fff;display:flex;align-items:center;justify-content:center">' + ico("eye", 18) + '</span>' +
+        '<div>' +
+          '<div style="font-weight:800;font-size:15px;color:#0f172a">模板预览 —— ' + escapeHtml(tplName) + '</div>' +
+          '<div style="font-size:11.5px;color:#64748b">只读展示：表单样式与全流程流转路径，不可编辑</div>' +
+        '</div>' +
+      '</div>' +
+      '<button class="close" data-close>' + ico("x", 20) + '</button>' +
+    '</div>' +
+    '<div class="modal-body" style="padding:22px 28px;overflow-y:auto;flex:1;background:#f8fafc">' +
+      '<div style="display:flex;gap:10px;margin-bottom:18px">' +
+        '<span class="tpl-tag-pill reply">' + escapeHtml(b.category) + '</span>' +
+        '<span class="tpl-tag-pill reply">' + escapeHtml(b.requirement) + '</span>' +
+        '<span style="background:#f1f5f9;color:#475569;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;display:inline-flex;align-items:center">' + escapeHtml(b.scope) + '</span>' +
+      '</div>' +
+      '<div style="font-weight:800;color:#0f172a;font-size:13.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px">' + ico("layout-template", 15) + ' 表单样式预览</div>' +
+      '<div class="designer-canvas-paper" style="margin-bottom:26px">' +
+        '<div style="border-bottom:1.5px solid #005c58;padding-bottom:12px;margin-bottom:18px">' +
+          '<div style="font-size:18px;font-weight:800;color:#0f172a">' + escapeHtml(tplName) + '</div>' +
+          '<div style="font-size:12px;color:#64748b;margin-top:2px">表单用途：' + escapeHtml(b.desc || "业务填报") + '</div>' +
+        '</div>' +
+        fieldsHtml +
+      '</div>' +
+      '<div style="font-weight:800;color:#0f172a;font-size:13.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px">' + ico("git-branch", 15) + ' 全流程流转路径预览</div>' +
+      flowHtml +
+    '</div>' +
+    '<div class="wizard-foot" style="background:#fff;border-top:1px solid #e2e8f0;padding:12px 24px;display:flex;justify-content:flex-end">' +
+      '<button type="button" class="btn primary" data-close style="padding:0 24px;font-weight:700">' + ico("check", 15) + ' 关闭</button>' +
+    '</div>' +
+  '</div>';
 }
 
 /* === 4. 表单预览模拟填报弹窗 === */
@@ -6515,35 +6598,10 @@ else if(a==="detail-accept"){
       state.tplFilterCat = el.dataset.cat || "全部";
       render();
     }
-    else if(a==="open-create-template-wizard"){
-      resetTplWizard();
-      openModal("template-wizard");
-    }
-    else if(a==="edit-tpl-wizard"){
-      var tplId = el.dataset.tplId;
-      resetTplWizard(tplId);
-      tplWizardState.step = 2;
-      openModal("template-wizard");
-    }
-    else if(a==="copy-tpl-item"){
-      var copyId = el.dataset.tplId;
-      var origTpl = issueTemplates.filter(function(t){ return t.id === copyId; })[0];
-      if(origTpl){
-        var newTpl = JSON.parse(JSON.stringify(origTpl));
-        newTpl.id = "TPL" + new Date().getFullYear() + ("0"+(new Date().getMonth()+1)).slice(-2) + ("0"+new Date().getDate()).slice(-2) + Date.now().toString().slice(-4);
-        newTpl.name = origTpl.name + "（副本）";
-        newTpl.usedCount = 0;
-        issueTemplates.unshift(newTpl);
-        showToast("已成功复制模板：" + origTpl.name);
-        render();
-      }
-    }
-    else if(a==="delete-tpl-item"){
-      var delId = el.dataset.tplId;
-      var tplToDelete = issueTemplates.filter(function(t){ return t.id === delId; })[0];
-      issueTemplates = issueTemplates.filter(function(t){ return t.id !== delId; });
-      showToast("已删除模板：" + (tplToDelete ? tplToDelete.name : ""));
-      render();
+    else if(a==="preview-tpl-item"){
+      var previewTplId = el.dataset.tplId;
+      resetTplWizard(previewTplId);
+      openModal("template-preview-full");
     }
     else if(a==="switch-settings-tab"){
       state.settingsTab = el.dataset.tab || "transfer";
@@ -7606,6 +7664,7 @@ function openModal(type){
   var root=document.getElementById("modalRoot");
   var html = "";
   if(type==="template-wizard") html = renderTplWizardModal();
+  else if(type==="template-preview-full") html = renderTplPreviewFullModal();
   else if(type==="form-preview") html = renderFormPreviewModal();
   else if(type==="reject") html = rejectModal();
   else if(type==="subtask") html = subInstructionModal();

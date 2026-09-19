@@ -2439,7 +2439,7 @@
           filters: { name: '', category: '', code: '' },
           list: [
             { id: 'c1', code: '-', group: '教育厅', name: '213', alias: '没关系我会弯腰', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=213', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true },
-            { id: 'c2', code: '-', group: '教育厅', name: 'zr', alias: '-', avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=zr&backgroundColor=e2e8f0', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true },
+            { id: 'c2', code: '-', group: '教育厅', name: 'zr', alias: '-', avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=zr&backgroundColor=e2e8f0', category: '舆情处置 | 错误表��', categories: ['舆情处置', '错误表述'], enabled: true },
             { id: 'c3', code: '-', group: '教育厅', name: 'yfb', alias: 'Konne', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=yfb', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true },
             { id: 'c4', code: '-', group: '住建厅', name: 'wx', alias: '测试账号', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=wx2', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true },
             { id: 'c5', code: '-', group: '住建厅', name: '郭总', alias: '-', avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=guozong&backgroundColor=e2e8f0', category: '舆情处置 | 错误表述', categories: ['舆情处置', '错误表述'], enabled: true }
@@ -2649,7 +2649,7 @@
           ],
           receiptFields: [
             { id: 'r1', type: '多行文本', title: '处理说明', required: '必填', placeholder: '请填写处理说明', defaultVal: '' },
-            { id: 'r2', type: '图片上传', title: '图片', required: '非必填', placeholder: '只支持格式JPG、GIF、PNG，且大小不超过10M。', defaultVal: '' },
+            { id: 'r2', type: '图片上传', title: '图片', required: '非必填', placeholder: '只支持格式JPG、GIF、PNG，且大小���超过10M。', defaultVal: '' },
             { id: 'r3', type: '文件上传', title: '文件', required: '非必填', placeholder: '支持DOC、DOCX、XLS、XISX、PPT等，且文件大小不超过10M', defaultVal: '' }
           ]
         },
@@ -2792,7 +2792,7 @@
       filters: {
         org: { name: '', status: '', version: '', expiring: false, expired: false },
         stats: { name: '', status: '', version: '', sortCol: '', sortOrder: 'desc' },
-        templates: { category: '', name: '', req: '' }
+        templates: { category: '', name: '', req: '', org: '' }
       }
     };
 
@@ -3173,16 +3173,17 @@
         if (f.category && item.category !== f.category) return false;
         if (f.name && !item.name.includes(f.name)) return false;
         if (f.req && item.req !== f.req) return false;
+        if (f.org && (item.org || '') !== f.org) return false;
         return true;
       });
 
       return `
         <div class="page-header">
           <div class="page-title-wrap">
-            <h1 class="page-title">通用模板管理</h1>
+            <h1 class="page-title">模板管理</h1>
             <div class="page-desc-hint">
               <i data-lucide="info" width="14" height="14"></i>
-              <span>维护全局指令模板，供所有机构统一复用。</span>
+              <span>维护全局通用模板与机构专属模板，通用模板供所有机构统一复用。</span>
             </div>
           </div>
           <button class="btn btn-primary" onclick="openAddTemplateModal()">
@@ -3215,6 +3216,14 @@
                 <option value="仅阅读" ${f.req==='仅阅读'?'selected':''}>仅阅读</option>
               </select>
             </div>
+            <div class="form-item">
+              <span class="form-label">所属机构</span>
+              <select class="form-select" id="tplFilterOrg" style="width:220px">
+                <option value="">全部（含通用模板）</option>
+                <option value="__COMMON__" ${f.org==='__COMMON__'?'selected':''}>通用模板</option>
+                ${state.orgs.map(o => `<option value="${o.name}" ${f.org===o.name?'selected':''}>${o.name}</option>`).join('')}
+              </select>
+            </div>
             <div class="filter-actions">
               <button class="btn btn-primary" onclick="queryTplFilters()">
                 <i data-lucide="search" width="14"></i>
@@ -3234,10 +3243,11 @@
             <table>
               <thead>
                 <tr>
-                  <th style="width: 200px;">模板ID</th>
-                  <th style="width: 110px;">指令类别</th>
-                  <th style="width: 110px;">指令要求</th>
+                  <th style="width: 190px;">模板ID</th>
+                  <th style="width: 100px;">指令类别</th>
+                  <th style="width: 100px;">指令要求</th>
                   <th>模板名称</th>
+                  <th style="width: 180px;">所属机构</th>
                   <th style="width: 160px;">创建时间</th>
                   <th style="width: 110px;">操作</th>
                 </tr>
@@ -3256,6 +3266,7 @@
                     <td>${row.category}</td>
                     <td>${row.req}</td>
                     <td><a class="org-link" onclick="openTemplateDetail('${row.id}')">${row.name}</a></td>
+                    <td>${row.org ? row.org : '<span style="color:#94a3b8">通用模板</span>'}</td>
                     <td>${row.createTime}</td>
                     <td>
                       <div class="action-group">
@@ -3462,10 +3473,11 @@
       state.filters.templates.category = document.getElementById('tplFilterCat').value;
       state.filters.templates.name = document.getElementById('tplFilterName').value.trim();
       state.filters.templates.req = document.getElementById('tplFilterReq').value;
+      state.filters.templates.org = document.getElementById('tplFilterOrg').value;
       render();
     }
     function resetTplFilters() {
-      state.filters.templates = { category: '', name: '', req: '' };
+      state.filters.templates = { category: '', name: '', req: '', org: '' };
       render();
     }
 
@@ -4068,6 +4080,7 @@
         name: '',
         category: '',
         req: '限时回执',
+        org: '',
         issueFields: [
           { id: 'f1', type: '单行文本', title: '', required: '非必填', placeholder: '', defaultVal: '' }
         ],
@@ -4095,8 +4108,8 @@
               </div>
             </div>
 
-            <!-- Row 2: 指令类别 & 指令要求 -->
-            <div class="mt-modal-two-cols" style="margin-bottom: 20px; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <!-- Row 2: 指令类别 & 指令要求 & 所属机构 -->
+            <div class="mt-modal-two-cols" style="margin-bottom: 20px; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
               <div class="mt-col-item">
                 <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;"><span class="req">*</span>指令类别</span>
                 <div style="flex:1;">
@@ -4114,6 +4127,15 @@
                     <option value="限时回执" selected>限时回执</option>
                     <option value="回执">回执</option>
                     <option value="仅阅读">仅阅读</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-col-item">
+                <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;">所属机构</span>
+                <div style="flex:1;">
+                  <select class="mt-input-text" id="tplOrgSelect" onchange="currentTplDraft.org=this.value">
+                    <option value="">通用模板（全部机构）</option>
+                    ${state.orgs.map(o => `<option value="${o.name}">${o.name}</option>`).join('')}
                   </select>
                 </div>
               </div>
@@ -4240,10 +4262,19 @@
                 </div>
               </div>
               <div class="mt-col-item">
-                <span class="mt-col-label" style="white-space: nowrap; text-align: right; color: #595959;">模板ID</span>
+                <span class="mt-col-label" style="width: 72px; min-width: 72px; text-align: right;">所属机构</span>
                 <div style="flex:1;">
-                  <input type="text" class="mt-input-text" value="${t.id}" disabled style="background:#f5f5f5; color:#8c8c8c; cursor:not-allowed; border-color:#e8e8e8;">
+                  <select class="mt-input-text" id="tplOrgSelect" onchange="currentTplDraft.org=this.value">
+                    <option value="" ${!currentTplDraft.org?'selected':''}>通用模板（全部机构）</option>
+                    ${state.orgs.map(o => `<option value="${o.name}" ${currentTplDraft.org===o.name?'selected':''}>${o.name}</option>`).join('')}
+                  </select>
                 </div>
+              </div>
+            </div>
+            <div class="mt-modal-row" style="margin-bottom: 16px;">
+              <span class="mt-col-label" style="white-space: nowrap; text-align: right; color: #595959; width: 72px; min-width: 72px;">模板ID</span>
+              <div style="flex:1;">
+                <input type="text" class="mt-input-text" value="${t.id}" disabled style="background:#f5f5f5; color:#8c8c8c; cursor:not-allowed; border-color:#e8e8e8;">
               </div>
             </div>
 
@@ -4332,12 +4363,15 @@
         return;
       }
 
+      const org = currentTplDraft.org || '';
+
       if (isEdit) {
         const item = state.templates.find(x => x.id === id);
         if (item) {
           item.name = name;
           item.category = cat;
           item.req = req;
+          item.org = org;
           item.issueFields = JSON.parse(JSON.stringify(currentTplDraft.issueFields));
           item.receiptFields = JSON.parse(JSON.stringify(currentTplDraft.receiptFields));
         }
@@ -4352,12 +4386,13 @@
           name: name,
           category: cat,
           req: req,
+          org: org,
           createTime: createTime,
           issueFields: JSON.parse(JSON.stringify(currentTplDraft.issueFields)),
           receiptFields: JSON.parse(JSON.stringify(currentTplDraft.receiptFields))
         });
         closeModal();
-        showToast('新增模板成功');
+        showToast(org ? '新增机构模板成功' : '新增通用模板成功');
       }
       render();
     }
